@@ -205,11 +205,9 @@ body {
     height: 629px;
     margin: 0;
     padding: 60px 0;
-    background: white;
     color: red;
     text-align: center;
     font-family: 'Rubik', sans-serif;
-
 }
 .inner{
     max-width: 1200px;
