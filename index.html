@@ -12,12 +12,15 @@
 <body>
 
     <div class="Navbar">
+        <div class="nav-title">
+            <img src="./assets/clipboard-logo.png" alt="Clipboard Logo" />
+            <span>Realtime Clipboard</span>
+        </div>
+
         <ul class="nav-container">
-            <a href="#" class="nav-items">Home</a>
-            <a href="#" class="nav-items">About</a>
-            <a href="./developer.html" class="nav-items">Developers</a>
-            <a href="#" class="nav-items">Updates</a>
-            <a href="#" class="nav-items">Services</a>
+            <li><a href="#" class="nav-items">Home</a></li>
+            <li><a href="#" class="nav-items">About</a></li>
+            <li><a href="#" class="nav-items">Updates</a></li>
         </ul>
     </div>
 
@@ -25,16 +28,19 @@
         <img src="./assets/file-bg.png" alt="file-bg image not found" class="img">
 
         <h1 class="app-name">Realtime Clipboard</h1>
-        <h2 class="tag-line">Join with unique key and share text everyone of your friend</h2>
+        <h2 class="tag-line">Join with unique key and share text with your friends!</h2>
 
-        <label id="lbl-1">Create New Clipboard ...</label>
-        <label id="lbl-2">Join with Community ...</label>
-        <br>
+        <div class="room-joining-container">
+            <div class="create-room-container">
+                <label for="createRoom" id="lbl-1">Create a new Clipboard...</label>
+                <button class="btn-1" id="createRoom" type="button">Create Clipboard</button>
+            </div>
 
-        <div class="container">
-            <button class="btn-1" type="button">Create Clipboard</button>
-            <input type="text" class="input-box" placeholder="Enter the ID ...">
-            <a href="./input-page.html"><button type="button" class="btn-2">Join</button></a>
+            <div class="join-room-container">
+                <label for="joinRoom" id="lbl-2">Or join an existing one...</label>
+                <input type="text" class="input-box" placeholder="Enter the ID" name="Room Code" id="joinRoom">
+                <button type="button" class="btn-2">Join</button>
+            </div>
         </div>
     </div>
 
