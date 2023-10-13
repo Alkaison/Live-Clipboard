@@ -299,6 +299,38 @@ body {
     margin: 8px 0;
     white-space: nowrap;
 }
+/* Updates Page */
+.updates-container {
+    padding: 32px 64px;
+}
+.updates-container h1 {
+    color: #ffffff;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+.version-release-container {
+    margin: 32px 0 0 0;
+}
+.version-release-container h3 {
+    color: #ffffff;
+    font-size: 24px;
+    font-family: "Rubik", sans-serif;
+    letter-spacing: 1.4px;
+}
+.version-release-container ul {
+    list-style-type: none;
+    padding: 12px 64px;
+}
+.version-release-container ul li {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: .7px;
+}
+.version-release-container ul li::marker {
+    content: '🛠️ ';
+}
 /* Responsive Navbar */
 @media screen and (max-width: 750px) {
     .Navbar {
