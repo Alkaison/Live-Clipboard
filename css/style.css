@@ -189,19 +189,44 @@ body {
 /* input page code here */
 .status{
     width: 100%;
-    height: 50px;
-    background: #c8ff00;
-    font-size: 20px;
+    height: 80px;
+    padding: 0 24px;
+    background: #1d3557;
+    color: #ffffff;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.status p {
+    padding: 8px 16px;
+    background-color: #eb5e28;
+    border-radius: 20px;
+    font-weight: normal;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1.5px;
 }
 #input-box{
-    padding: 5px;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 16px 12px;
+    resize: none;
+    color: #ffffff;
+    outline: transparent;
+    border: 1px solid transparent;
+    border-radius: 0;
     background: transparent;
     font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5rem;
+    letter-spacing: .7px;
+}
+#input-box::-webkit-scrollbar {
+    display: none;
 }
 
 /* Devloper page code */
@@ -273,6 +298,46 @@ body {
     text-transform: capitalize;
     margin: 8px 0;
     white-space: nowrap;
+}
+/* Updates Page */
+.updates-container {
+    padding: 32px 64px;
+}
+.updates-container h1 {
+    margin: 0 0 24px 0;
+    color: #ffffff;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+.version-release-container {
+    margin: 0 0 24px 0;
+}
+.version-release-container h3 {
+    color: #ffffff;
+    font-size: 24px;
+    font-family: "Rubik", sans-serif;
+    letter-spacing: 1.4px;
+}
+.version-release-container ul {
+    list-style-type: none;
+    padding: 12px 64px;
+    line-height: 1.7rem;
+}
+.version-release-container ul li {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: .8px;
+}
+.version-release-container ul li::marker {
+    content: '🛠️ ';
+}
+/* Responsive Updates Page */
+@media screen and (max-width: 750px) {
+    .updates-container {
+        padding: 32px 16px;
+    }
 }
 /* Responsive Navbar */
 @media screen and (max-width: 750px) {
