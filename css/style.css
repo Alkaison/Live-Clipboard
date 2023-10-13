@@ -331,6 +331,12 @@ body {
 .version-release-container ul li::marker {
     content: '🛠️ ';
 }
+/* Responsive Updates Page */
+@media screen and (max-width: 750px) {
+    .updates-container {
+        padding: 32px 16px;
+    }
+}
 /* Responsive Navbar */
 @media screen and (max-width: 750px) {
     .Navbar {
