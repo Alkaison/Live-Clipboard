@@ -304,13 +304,14 @@ body {
     padding: 32px 64px;
 }
 .updates-container h1 {
+    margin: 0 0 24px 0;
     color: #ffffff;
     font-family: "Rubik", sans-serif;
     font-weight: bold;
     letter-spacing: 1.4px;
 }
 .version-release-container {
-    margin: 32px 0 0 0;
+    margin: 0 0 24px 0;
 }
 .version-release-container h3 {
     color: #ffffff;
@@ -321,12 +322,13 @@ body {
 .version-release-container ul {
     list-style-type: none;
     padding: 12px 64px;
+    line-height: 1.7rem;
 }
 .version-release-container ul li {
     color: #ffffff;
     font-size: 16px;
     font-family: "Poppins", sans-serif;
-    letter-spacing: .7px;
+    letter-spacing: .8px;
 }
 .version-release-container ul li::marker {
     content: '🛠️ ';
