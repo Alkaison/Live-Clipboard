@@ -71,6 +71,7 @@ body {
 
 /* Body */
 .body-container {
+    /* padding: 0 32px 32px; */
     padding: 32px;
     margin: 0 0 32px 0;
     display: flex;
@@ -79,11 +80,11 @@ body {
     flex-direction: column;
 }
 .body-container .img {
-    height: 450px;
+    height: 300px;
     aspect-ratio: 1/1;
 }
 .app-name {
-    margin-top: 16px;
+    /* margin-top: 16px; */
     text-align: center;
     color: #ffffff;
     font-family: 'Rubik', sans-serif;
@@ -204,12 +205,14 @@ body {
     letter-spacing: 1px;
 }
 .status p {
-    padding: 8px 16px;
-    background-color: #eb5e28;
+    padding: 8px 28px;
+    background-color: #00b4d8;
     border-radius: 20px;
     font-weight: normal;
+    font-size: 18px;
+    font-weight: bold;
     font-family: "Poppins", sans-serif;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
 }
 #input-box{
     width: 100%;
@@ -398,7 +401,7 @@ body {
     .body-container {
         width: 100%;
         padding: 12px 16px;
-        gap: 16px;
+        gap: 12px;
     }
     .body-container .img {
         height: 300px;
@@ -412,7 +415,7 @@ body {
     }
     .tag-line {
         margin: 0 0 8px 0;
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 /* Home Page Input Fields */
@@ -421,9 +424,6 @@ body {
         width: 100%;
     }
     .create-room-container, .join-room-container {
-        width: 100%;
-    }
-    .body-container .img {
         width: 100%;
     }
 }
