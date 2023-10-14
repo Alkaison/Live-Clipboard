@@ -79,8 +79,8 @@ body {
     flex-direction: column;
 }
 .body-container .img {
-    height: 375px;
-    aspect-ratio: 2.35/2;
+    height: 450px;
+    aspect-ratio: 1/1;
 }
 .app-name {
     margin-top: 16px;
