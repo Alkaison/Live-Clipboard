@@ -72,6 +72,7 @@ body {
 /* Body */
 .body-container {
     padding: 32px;
+    margin: 0 0 32px 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
