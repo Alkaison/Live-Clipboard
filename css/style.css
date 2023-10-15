@@ -11,7 +11,7 @@
 .light-theme{
     --primary-color: #DCEFFA;
     --secondary-color: #79cff5;
-    --font-color: black;
+    --font-color: #000000;
 }
 
 * {
@@ -78,8 +78,12 @@ body {
     color: #00b4d8;
     border-bottom: 2px solid #00b4d8;
 }
+.light-theme .nav-items:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
 
-#theme{
+.theme {
     width: 30px;
     position: relative;
     top: 2px;
@@ -209,7 +213,7 @@ body {
     background-color: rgba(66, 165, 245, .8);
 }
 
-/* input page code here */
+/* clipboard page code here */
 .status{
     width: 100%;
     height: 80px;
@@ -225,7 +229,12 @@ body {
     font-weight: bold;
     letter-spacing: 1px;
 }
-.status p {
+.cp-code {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.status .cp-code span {
     padding: 8px 28px;
     background-color: #00b4d8;
     border-radius: 20px;
@@ -328,15 +337,18 @@ body {
 .updates-container {
     padding: 32px 64px;
 }
+.updates-container hr {
+    color: var(--primary-color);
+}
 .updates-container h1 {
-    margin: 0 0 24px 0;
+    margin: 0 0 8px 0;
     color: var(--font-color);
     font-family: "Rubik", sans-serif;
     font-weight: bold;
     letter-spacing: 1.4px;
 }
 .version-release-container {
-    margin: 0 0 24px 0;
+    margin: 24px 0;
 }
 .version-release-container h3 {
     color: var(--font-color);
@@ -446,5 +458,17 @@ body {
     }
     .create-room-container, .join-room-container {
         width: 100%;
+    }
+}
+/* Clipboard responsive code */
+@media screen and (max-width: 400px) {
+    .nav-title, .cp-code, .status {
+        gap: 8px;
+    }
+    .status {
+        padding: 16px;
+    }
+    .status .cp-code span {
+        padding: 8px 16px;
     }
 }
