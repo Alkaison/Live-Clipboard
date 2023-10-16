@@ -85,6 +85,7 @@ body {
 
 .theme {
     width: 30px;
+    height: 30px;
     position: relative;
     top: 2px;
     cursor: pointer;
@@ -159,8 +160,8 @@ body {
 .btn-1 {
     width: 400px;
     height: 50px;
-    color: var(--font-color);
-    background-color: rgba(66, 165, 245, 1);
+    color: #ffffff;
+    background-color: #064374;
     outline: transparent;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -183,7 +184,7 @@ body {
     background-color: #ffffff;
     outline: transparent;
     border: 1px solid transparent;
-    border-radius: 5px;
+    border-radius: 6px 8px 8px 6px;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -196,8 +197,8 @@ body {
     right: 0;
     width: 80px;
     height: 50px;
-    color: var(--font-color);
-    background-color: rgba(66, 165, 245, 1);
+    color: #ffffff;
+    background-color: #064374;
     outline: transparent;
     border: 1px solid transparent;
     border-radius: 0 5px 5px 0;
