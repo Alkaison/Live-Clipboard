@@ -32,12 +32,13 @@ body {
     align-items: center;
     background: var(--secondary-color);
 }
-.nav-title {
+.nav-title a {
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 16px;
-    cursor: default;
+    cursor: pointer;
 }
 .nav-title img {
     width: 50px;
