@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/navBar.js" defer></script>
     <script src="./js/toggleTheme.js" defer></script>
+    <script src="./js/clipboard.js" defer></script>
 </head>
 
 <body>
@@ -75,13 +76,12 @@
         <div class="room-joining-container">
             <div class="create-room-container">
                 <label for="createRoom" id="lbl-1">Create a new Clipboard...</label>
-                <button class="btn-1" id="createRoom" type="button"
-                    onclick="window.location.href = './clipboard.html';">Create Clipboard</button>
+                <button class="btn-1" id="createRoom" type="button">Create Clipboard</button>
             </div>
 
             <div class="join-room-container">
                 <label for="joinRoom" id="lbl-2">Or join an existing one...</label>
-                <input type="text" class="input-box" placeholder="Enter the ID" name="Room Code" id="joinRoom">
+                <input type="text" class="input-box" placeholder="Enter the ID" name="Room Code" id="joinRoom" minlength="5" maxlength="5">
                 <button type="button" class="btn-2">Join</button>
             </div>
         </div>
