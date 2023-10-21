@@ -154,6 +154,13 @@ body {
     line-height: normal;
     letter-spacing: 1px;
 }
+.join-room-container.active #lbl-2 {
+    color: rgb(255, 0, 0);
+    font-weight: normal;
+}
+.join-room-container.active input {
+    border: 2px solid red;
+}
 .btn-1 {
     width: 400px;
     height: 50px;
@@ -180,7 +187,7 @@ body {
     color: #000000;
     background-color: #ffffff;
     outline: transparent;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: 6px 8px 8px 6px;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
@@ -227,6 +234,14 @@ body {
     font-weight: bold;
     letter-spacing: 1px;
 }
+.status .nav-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.status .nav-title a {
+    gap: 16px;
+}
 .cp-code {
     display: flex;
     align-items: center;
@@ -234,6 +249,7 @@ body {
 }
 .status .cp-code span {
     padding: 8px 28px;
+    white-space: nowrap;
     background-color: #00b4d8;
     border-radius: 20px;
     font-weight: normal;
@@ -241,6 +257,15 @@ body {
     font-weight: bold;
     font-family: "Poppins", sans-serif;
     letter-spacing: 1.8px;
+}
+#clip-status {
+    padding: 2px 8px;
+    color: black;
+    background-color: #F7E018;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: .5px;
 }
 #input-box{
     width: 100%;
@@ -515,14 +540,24 @@ body {
 }
 
 /* Clipboard responsive code */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
     .nav-title, .cp-code, .status {
         gap: 8px;
     }
     .status {
         padding: 16px;
     }
+    .status .nav-title a span {
+        display: none;
+    }
+    .status .nav-title {
+        gap: 8px;
+    }
     .status .cp-code span {
-        padding: 8px 16px;
+        padding: 8px 10px;
+        border-radius: 28px;
+    }
+    #clip-status {
+        font-size: 12px;
     }
 }

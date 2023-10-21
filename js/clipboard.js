@@ -1,6 +1,8 @@
 const createClipboardBtn = document.querySelector(".btn-1");
 const joinClipboardBtn = document.querySelector(".btn-2");
 const codeInputField = document.querySelector("#joinRoom");
+const codeInputLabel = document.querySelector("#lbl-2");
+const codeInputContainer = document.querySelector(".join-room-container");
 
 let joiningCode = '';
 const JOINING_CODE_LENGTH = 5;
@@ -14,13 +16,25 @@ const generateJoiningCode = () => {
         createCode += str.charAt(Math.floor(Math.random() * strLength));
     }
 
-    // Temporary: Log the generated code
-    console.log(createCode);
+    invalidCodeError(false);
+    codeInputField.value = '';
+    localStorage.setItem("code", createCode);
 }
 
 // Update the joining code based on input
 const updateJoiningCode = (value) => {
     joiningCode = value;
+}
+
+const invalidCodeError = (value) => {
+    if (value) {
+        codeInputContainer.classList.add("active");
+        codeInputLabel.textContent = "Invalid ID, please check again.";
+    } 
+    else {
+        codeInputContainer.classList.remove("active");
+        codeInputLabel.textContent = "Or join an existing one...";
+    }
 }
 
 // Validate the joining code
@@ -30,11 +44,10 @@ const validateJoiningCode = () => {
     const validCode = codeLength === JOINING_CODE_LENGTH && regExp.test(joiningCode);
 
     if (validCode) {
-        // code for connecting with database
-        console.log("Valid code.");
+        invalidCodeError(false);
+        localStorage.setItem("code", joiningCode);
     } else {
-        // code for showing the text message for invalid code on index.html file
-        console.log("Invalid code.");
+        invalidCodeError(true);
     }
 }
 
