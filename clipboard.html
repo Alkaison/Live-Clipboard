@@ -31,6 +31,8 @@
     <!-- CSS/JS -->
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/toggleTheme.js" defer></script>
+
+    <script src="./js/clipboard.js" defer></script>
 </head>
 
 <body>
@@ -55,9 +57,9 @@
     
     <!-- Auto Save Button -->
     <div class="auto">
-        <span style="color: rgb(13, 211, 211);">Auto Save</span>
+        <span style="color: rgb(13, 211, 211); font-size: 15px;">Auto Save : </span>
         <label class="switch">
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" class="checkbox" onclick="autoSave()">
             <span class="slider round">ON OFF</span>
           </label>
     </div>

@@ -286,11 +286,17 @@ body {
     display: none;
 }
 /* Autosave Button */
+
 .auto{
     margin-top: -815px;
     margin-right: 20px;
-    width: 70px;
+    width: 145px;
     float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Rubik", sans-serif;
+
 }
 .switch {
     position: relative;
@@ -617,7 +623,7 @@ body {
 }
 
 /* Clipboard responsive code */
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
     .nav-title, .cp-code, .status {
         gap: 8px;
     }
@@ -636,5 +642,8 @@ body {
     }
     #clip-status {
         font-size: 12px;
+    }
+    .auto{
+        margin-top: -790px;
     }
 }
