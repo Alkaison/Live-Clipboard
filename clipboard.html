@@ -45,9 +45,20 @@
             </a>
             <span id="clip-status">connecting...</span>
         </div>
-        <div class="cp-code">
-            <img class="theme" src="./assets/sun.webp" alt="Theme icon">
-            <span title="Instant Sharing Mode" id="clip-code">-----</span>
+
+        <div class="nav-content">
+            <!-- Auto Save Button -->
+            <div class="auto">
+                <span style=" font-size: 15px;">Auto Save : </span>
+                <label class="switch">
+                    <input type="checkbox" class="checkbox" onclick="autoSave()">
+                    <span class="slider round">ON OFF</span>
+                </label>
+            </div>
+            <div class="cp-code">
+                <img class="theme" src="./assets/sun.webp" alt="Theme icon">
+                <span title="Instant Sharing Mode" id="clip-code">-----</span>
+            </div>
         </div>
     </div>
     
@@ -55,14 +66,7 @@
         <textarea name="textarea" id="input-box" placeholder="Type here" autofocus></textarea>
     </div>
     
-    <!-- Auto Save Button -->
-    <div class="auto">
-        <span style="color: rgb(13, 211, 211); font-size: 15px;">Auto Save : </span>
-        <label class="switch">
-            <input type="checkbox" class="checkbox" onclick="autoSave()">
-            <span class="slider round">ON OFF</span>
-          </label>
-    </div>
+    <img class="mobile-theme" src="./assets/sun.webp" alt="Theme icon">
    
 
 </body>
