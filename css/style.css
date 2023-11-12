@@ -310,9 +310,8 @@ body {
     justify-content: space-between;
     align-items: center;
     font-family: "Rubik", sans-serif;
-    background: var(--secondary-color);
     color: var(--font-color);
-
+    background: transparent;
 }
 .switch {
     position: relative;
@@ -651,7 +650,11 @@ body {
         gap: 8px;
     }
     .status {
-        padding: 16px;
+        min-width:fit-content;
+        display: flex;
+        width: 100%;
+        padding: 0 16px;
+        position: relative;
     }
     .status .nav-title a span {
         display: none;
