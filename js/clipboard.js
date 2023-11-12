@@ -4,6 +4,19 @@ const codeInputField = document.querySelector("#joinRoom");
 const codeInputLabel = document.querySelector("#lbl-2");
 const codeInputContainer = document.querySelector(".join-room-container");
 
+let checebox = document.querySelector(".checkbox");
+checebox.checked = false;
+function autoSave()
+{
+    if (checebox.checked == true){
+        alert("AutoSave Mode ON");
+    }
+    else{
+        alert("AutoSave Mode OFF");
+    }
+}
+
+
 let joiningCode = '';
 const JOINING_CODE_LENGTH = 5;
 

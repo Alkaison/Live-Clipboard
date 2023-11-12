@@ -75,7 +75,7 @@ body {
     letter-spacing: 1px;
     transition: color .3s, border-bottom .3s;
 }
-.nav-items:hover{
+.nav-items:hover {
     color: #00b4d8;
     border-bottom: 2px solid #00b4d8;
 }
@@ -89,6 +89,17 @@ body {
     position: relative;
     top: 2px;
     cursor: pointer;
+}
+.mobile-theme{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    position: fixed;
+    cursor: pointer;
+    float: right;
+    bottom: 70px;
+    right: 20px;
+    display: none;
 }
 .mobile-title, .humburger-icon {
     display: none;
@@ -286,11 +297,21 @@ body {
     display: none;
 }
 /* Autosave Button */
+.nav-content{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
 .auto{
-    margin-top: -815px;
-    margin-right: 20px;
-    width: 70px;
+    width: 155px;
     float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Rubik", sans-serif;
+    color: var(--font-color);
+    background: transparent;
 }
 .switch {
     position: relative;
@@ -356,6 +377,7 @@ body {
     display:flex;
     align-items:center;
     justify-content:space-evenly;
+    color: #000;
   }
   
   .slider.round:before {
@@ -559,6 +581,12 @@ body {
     .humburger-icon {
         transform: rotate(180deg);
     }
+    .theme{
+        display: none;
+    }
+    .mobile-theme{
+        display: inherit;
+    }
 }
 
 /* Responsive Main Body */
@@ -617,12 +645,16 @@ body {
 }
 
 /* Clipboard responsive code */
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
     .nav-title, .cp-code, .status {
         gap: 8px;
     }
     .status {
-        padding: 16px;
+        min-width:fit-content;
+        display: flex;
+        width: 100%;
+        padding: 0 16px;
+        position: relative;
     }
     .status .nav-title a span {
         display: none;
@@ -637,4 +669,5 @@ body {
     #clip-status {
         font-size: 12px;
     }
+
 }
