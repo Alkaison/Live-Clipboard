@@ -4,15 +4,22 @@ const input = document.getElementById('input-box')
 const statusline = document.getElementById('clip-status')
 
 socket.on('reconnect_failed', ()=>{
-    console.log('Reconnection error')
+    console.log('Reconnection failed')
 })
 socket.on('connect_failed', ()=>{
-    console.log('Connection error')
+    console.log('Connection failed')
+})
+socket.on('reconnect', ()=>{
+    console.log('Reconnected to server')
+})
+socket.on('reconnecting', ()=>{
+    console.log('Reconnecting to server')
 })
 
 // connection with server from client side
 socket.on('connect', function () {
     console.log('Connected to Server')
+    // console.log('ID', socket.id)
     setTimeout(() => {
         statusline.innerHTML = 'Wait .'
     }, 1000);
@@ -35,9 +42,11 @@ socket.on('connect', function () {
 // message listener from server
 socket.on('serverMessage', function (message) {
     console.log(message);
-    setTimeout(() => { input.value = message.text}, 300)
+    // if(socket.id!==message.from){
+        console.log('Server message overwritten')
+        setTimeout(() => { input.value = message.text}, 300)
+    // }
 });
-
 
 // when disconnected from server
 socket.on('disconnect', function () {
