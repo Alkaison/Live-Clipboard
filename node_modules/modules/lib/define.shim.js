@@ -1,0 +1,1 @@
+this.define||((this.define=function(){define.amd.d.push(arguments)}).amd={d:[]});

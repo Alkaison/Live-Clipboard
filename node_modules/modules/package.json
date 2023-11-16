@@ -1,0 +1,33 @@
+{
+	"name": "modules",
+	"description": "CommonJS modules for the browser",
+	"version": "0.4.0",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/thetalecrafter/modules"
+	},
+	"author": {
+		"name": "Andy VanWagoner",
+		"email": "thetalecrafter@gmail.com"
+	},
+	"keywords": [
+		"module",
+		"require",
+		"commonjs",
+		"amd",
+		"dependency"
+	],
+	"scripts": { "test" : "grunt test" },
+	"engines": { "node": "*" },
+	"dependencies": {
+	},
+	"devDependencies": {
+		"async": "^0.8",
+		"jsdom": "^0.10",
+		"grunt": "^0.4",
+		"grunt-cli": "^0.1",
+		"grunt-contrib-jshint": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-contrib-nodeunit": "*"
+	}
+}

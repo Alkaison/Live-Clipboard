@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Modules Client Tests</title>
+		<link rel="stylesheet" href="nodeunit.css" />
+		<script src="nodeunit.js"></script>
+		<script>
+			// terrible polyfill for old IE. Use json2 in real code.
+			window.JSON = window.JSON || { parse:function(str) { return eval('('+str+')'); } };
+		</script>
+
+		<script>var module = {};</script>
+		<script src="test/define.test.js"></script>
+		<script>var define_test = module.exports;</script>
+	</head>
+	<body>
+		<h1 id="nodeunit-header">Modules Client Tests</h1>
+		<script>
+			nodeunit.run({
+				'define.test.js': define_test
+			});
+		</script>
+	</body>
+</html>

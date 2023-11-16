@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="title" content="Realtime Clipboard" />
+    <meta name="description" content="Realtime Clipboard to create, edit, and collaborate on live collaborative boards in real-time." />
+    <meta name="keywords" content="realtime clipboard, live clipboard, copy paste code, share code, clipboard, clipboard sharing online, text sharing, online clipboard" />
+    <meta name="theme-color" content="#1D3557" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://live-clipboard.netlify.app/" />
+    <meta property="og:title" content="Realtime Clipboard" />
+    <meta property="og:description" content="Realtime Clipboard to create, edit, and collaborate on live collaborative boards in real-time." />
+    <meta property="og:image" content="https://live-clipboard.netlify.app/assets/clipboard.webp" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://live-clipboard.netlify.app/" />
+    <meta property="twitter:title" content="Realtime Clipboard" />
+    <meta property="twitter:description" content="Realtime Clipboard to create, edit, and collaborate on live collaborative boards in real-time." />
+    <meta property="twitter:image" content="https://live-clipboard.netlify.app/assets/clipboard.webp" />
+
+    <title>Realtime Clipboard</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+    <!-- CSS/JS -->
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <script src="./js/toggleTheme.js" defer></script>
+    <script src="./js/clipboard.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js" integrity="sha512-zoJXRvW2gC8Z0Xo3lBbao5+AS3g6YWr5ztKqaicua11xHo+AvE1b0lT9ODgrHTmNUxeCw0Ry4BGRYZfXu70weg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/socket.js" defer></script>
+</head>
+
+<body>
+    
+    <div class="status">
+        <div class="nav-title">
+            <a href="./index.html" title="Clipboard">
+                <img src="./assets/clipboard-logo.webp" alt="Clipboard Logo" />
+                <span>Clipboard</span>
+            </a>
+            <span id="clip-status">connecting...</span>
+        </div>
+
+        <div class="nav-content">
+            <!-- Auto Save Button -->
+            <div class="auto">
+                <span style=" font-size: 15px;">Auto Save : </span>
+                <label class="switch">
+                    <input type="checkbox" class="checkbox" onclick="autoSave()">
+                    <span class="slider round">ON OFF</span>
+                </label>
+            </div>
+            <div class="cp-code">
+                <img class="theme" src="./assets/sun.webp" alt="Theme icon">
+                <span title="Instant Sharing Mode" id="clip-code">-----</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="input">
+        <textarea name="textarea" id="input-box" placeholder="Type here" autofocus ></textarea>
+    </div>
+    
+    <img class="mobile-theme" src="./assets/sun.webp" alt="Theme icon">
+   
+
+</body>
+</html>
