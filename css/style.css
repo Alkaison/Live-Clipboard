@@ -449,7 +449,7 @@ body {
 }
 .version-release-container {
     margin: 24px 0;
-    animation: 1s fadeInRightToLeft;
+    animation: 1s fadeInLeftToRight;
 }
 .version-release-container h3 {
     color: var(--font-color);
