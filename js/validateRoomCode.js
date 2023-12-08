@@ -59,3 +59,8 @@ joinClipboardBtn.addEventListener("click", validateJoiningCode);
 codeInputField.addEventListener("input", (e) =>
   updateJoiningCode(e.target.value)
 );
+codeInputField.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    validateJoiningCode();
+  }
+});
