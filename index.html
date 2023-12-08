@@ -72,10 +72,30 @@
     <script src="./js/navBar.js" defer></script>
     <script src="./js/toggleTheme.js" defer></script>
     <script src="./js/validateRoomCode.js" defer></script>
+
+    <!-- Structed Data for Google Search -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https://live-clipboard.netlify.app/",
+        "name": "Realtime Clipboard",
+        "description": "Realtime Clipboard to create, edit, and collaborate on live collaborative boards in real-time.",
+        "image": "https://live-clipboard.netlify.app/assets/clipboard.webp",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Realtime Clipboard",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://live-clipboard.netlify.app/assets/clipboard-logo.webp"
+          }
+        }
+      }
+    </script>
   </head>
 
   <body>
-    <div class="Navbar">
+    <div class="Navbar" role="navigation" aria-label="Navigation Bar">
       <div class="nav-title">
         <a href="./index.html" title="Realtime Clipboard">
           <img src="./assets/clipboard-logo.webp" alt="Clipboard Logo" />
@@ -83,7 +103,11 @@
         </a>
       </div>
 
-      <div class="humburger-icon">
+      <div
+        class="humburger-icon"
+        role="button"
+        aria-label="Toggle Navigation Menu"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1em"
@@ -96,9 +120,9 @@
         </svg>
       </div>
 
-      <ul class="nav-container">
-        <li class="mobile-title">
-          <span class="cross-icon">
+      <ul class="nav-container" role="menubar" aria-label="Main Menu">
+        <li class="mobile-title" role="menuitem">
+          <span class="cross-icon" aria-hidden="true">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -111,10 +135,18 @@
           </span>
           <span>Menus</span>
         </li>
-        <li><img class="theme" src="./assets/sun.webp" alt="Theme icon" /></li>
-        <li><a href="./index.html" class="nav-items">Home</a></li>
-        <li><a href="./about.html" class="nav-items">About</a></li>
-        <li><a href="./updates.html" class="nav-items">Updates</a></li>
+        <li role="menuitem">
+          <img class="theme" src="./assets/sun.webp" alt="Theme icon" />
+        </li>
+        <li role="menuitem">
+          <a href="./index.html" class="nav-items">Home</a>
+        </li>
+        <li role="menuitem">
+          <a href="./about.html" class="nav-items">About</a>
+        </li>
+        <li role="menuitem">
+          <a href="./updates.html" class="nav-items">Updates</a>
+        </li>
       </ul>
     </div>
 
@@ -127,14 +159,22 @@
       </h2>
 
       <div class="room-joining-container">
-        <div class="create-room-container">
+        <div
+          class="create-room-container"
+          role="group"
+          aria-label="Create Clipboard"
+        >
           <label for="createRoom" id="lbl-1">Create a new Clipboard...</label>
           <button class="btn-1" id="createRoom" type="button">
             Create Clipboard
           </button>
         </div>
 
-        <div class="join-room-container">
+        <div
+          class="join-room-container"
+          role="group"
+          aria-label="Join Clipboard"
+        >
           <label for="joinRoom" id="lbl-2">Or join an existing one...</label>
           <input
             type="text"
