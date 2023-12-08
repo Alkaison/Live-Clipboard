@@ -13,20 +13,6 @@ theme.onclick = function () {
   }
 };
 
-const mobile_theme = document.querySelector(".mobile-theme");
-mobile_theme.onclick = function () {
-  document.body.classList.toggle("light-theme");
-  if (document.body.classList.contains("light-theme")) {
-    mobile_theme.src = "assets/moon.webp";
-    let darktheme = 0;
-    localStorage.setItem("isDark", darktheme);
-  } else {
-    mobile_theme.src = "assets/sun.webp";
-    let darktheme = 1;
-    localStorage.setItem("isDark", darktheme);
-  }
-};
-
 //Get preferred theme from local storage
 let isDark = localStorage.getItem("isDark");
 if (isDark == 0) {

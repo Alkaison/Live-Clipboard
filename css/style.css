@@ -21,6 +21,7 @@
 }
 body {
     background-color: var(--primary-color);
+    transition: color .5s, background-color .5s;
 }
 
 /* Navbar */
@@ -31,6 +32,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background: var(--secondary-color);
+    animation: .5s fadeInDown;
 }
 .nav-title a {
     text-decoration: none;
@@ -90,19 +92,50 @@ body {
     top: 2px;
     cursor: pointer;
 }
-.mobile-theme{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    position: fixed;
-    cursor: pointer;
-    float: right;
-    bottom: 70px;
-    right: 20px;
-    display: none;
-}
 .mobile-title, .humburger-icon {
     display: none;
+}
+
+/* FadeIn Animations */
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInRightToLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInLeftToRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 /* Body */
@@ -149,12 +182,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    animation: 1s fadeInUp;
 }
 .join-room-container {
     display: flex;
     flex-direction: column;
     gap: 8px;
     position: relative;
+    animation: 1s fadeInUp;
 }
 #lbl-1, #lbl-2 {
     display: block;
@@ -405,6 +440,9 @@ body {
     font-family: "Poppins", sans-serif;
     letter-spacing: .7px;
 }
+.devs-section {
+    animation: 1s fadeInUp;
+}
 .devs-title {
     margin: 32px 0;
     text-align: center;
@@ -500,6 +538,7 @@ body {
 }
 .version-release-container {
     margin: 24px 0;
+    animation: 1s fadeInRightToLeft;
 }
 .version-release-container h3 {
     color: var(--font-color);
@@ -581,14 +620,7 @@ body {
     .humburger-icon {
         transform: rotate(180deg);
     }
-    .theme{
-        display: none;
-    }
-    .mobile-theme{
-        display: inherit;
-    }
 }
-
 /* Responsive Main Body */
 @media screen and (max-width: 930px) {
     .body-container {
@@ -650,7 +682,7 @@ body {
         gap: 8px;
     }
     .status {
-        min-width:fit-content;
+        min-width: initial;
         display: flex;
         width: 100%;
         padding: 0 16px;
@@ -669,5 +701,4 @@ body {
     #clip-status {
         font-size: 12px;
     }
-
 }
