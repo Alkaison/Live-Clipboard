@@ -13,7 +13,7 @@
       name="keywords"
       content="realtime clipboard, live clipboard, copy paste code, share code, clipboard, clipboard sharing online, text sharing, online clipboard"
     />
-    <meta name="theme-color" content="#1D3557" />
+    <meta name="site.name" content="Realtime Clipboard" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://live-clipboard.netlify.app/" />
     <meta property="og:title" content="Realtime Clipboard" />
@@ -45,59 +45,50 @@
     <!-- Favicons -->
     <link
       rel="shortcut icon"
-      href="./assets/favicon/favicon.ico"
+      href="%PUBLIC_URL%/favicon/favicon.ico"
       type="image/x-icon"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./assets/favicon/apple-touch-icon.png"
+      href="%PUBLIC_URL%/favicon/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./assets/favicon/favicon-32x32.png"
+      href="%PUBLIC_URL%/favicon/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="./assets/favicon/favicon-16x16.png"
+      href="%PUBLIC_URL%/favicon/favicon-16x16.png"
     />
-    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+    <link rel="manifest" href="%PUBLIC_URL%/favicon/site.webmanifest" />
 
-    <!-- CSS/JS -->
-    <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/toggleTheme.js" type="module" defer></script>
-    <script src="./js/clipboard.js" type="module" defer></script>
+    <!-- Structed Data for Google Search -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https://live-clipboard.netlify.app/",
+        "name": "Realtime Clipboard",
+        "description": "Realtime Clipboard to create, edit, and collaborate on live collaborative boards in real-time.",
+        "image": "https://live-clipboard.netlify.app/assets/clipboard.webp",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Realtime Clipboard",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://live-clipboard.netlify.app/assets/clipboard-logo.webp"
+          }
+        }
+      }
+    </script>
   </head>
-
   <body>
-    <div class="status">
-      <div class="nav-title">
-        <a href="./index.html" title="Clipboard">
-          <img src="./assets/clipboard-logo.webp" alt="Clipboard Logo" />
-          <span>Clipboard</span>
-        </a>
-        <span id="clip-status">connecting...</span>
-      </div>
-
-      <div class="nav-content">
-        <div class="cp-code">
-          <img class="theme" src="./assets/sun.webp" alt="Theme icon" />
-          <span title="Instant Sharing Mode" id="clip-code">-----</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="input">
-      <textarea
-        name="textarea"
-        id="input-box"
-        placeholder="Type here"
-        autofocus
-      ></textarea>
-    </div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="realtime-clipboard"></div>
   </body>
 </html>

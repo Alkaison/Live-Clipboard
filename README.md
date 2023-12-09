@@ -1,6 +1,6 @@
 # Live Clipboard
 
-![Live Clipboard](https://github.com/Alkaison/Live-Clipboard/assets/98116504/7b376fc1-ca5f-460a-aca5-f6cf1b263cf0)
+![Live Clipboard](https://github.com/Alkaison/Live-Clipboard/assets/98116504/91fd6f21-d09b-47ff-8b02-d565ad26f4eb)
 
 Welcome to Live Clipboard, an exciting open-source project! We're thrilled to have you join us on this journey to create a web app using Firebase Realtime Database.
 
@@ -15,8 +15,8 @@ Live Clipboard is a web app that allows users to create, edit, and collaborate o
 
 ### Technologies Used:
 
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=black)
 
 ## Why Contribute?
@@ -43,7 +43,7 @@ git clone https://github.com/Alkaison/Live-Clipboard.git
 
 3. **Set Up Firebase**: If you haven't already, create a Firebase project and set up the Firebase Realtime Database. You can follow Firebase's [official documentation](https://firebase.google.com/docs/database) for guidance.
 
-4. **Firebase Setup**: Rename the `firebase/config.example.js` to `firebase/config.js` and add your Firebase Realtime Database API Credentials into the `firebaseConfig`.
+4. **Package Installation**: Install packages by running this command `npm install` and then create `.env` file and add your Firebase app keys in it.
 
 5. **Development**: Start contributing by working on issues, adding new features, or fixing bugs. Be sure to create a new branch for your work:
 
@@ -67,12 +67,11 @@ To maintain a healthy and collaborative open-source community, please adhere to 
 
 ## Project Structure
 
-The project structure is organized as follows:
+The project structure under `src` is organized as follows:
 
-- `/assets`: Project images and favicons.
-- `/css`: Website StyleSheets.
-- `/js`: Vanilla JavaScript code files.
-- `/firebase`: Firebase configuration files.
+- `components/`: contains all components for the pages.
+- `firebase/`: contains Firebase config file.
+- `pages/`: contains pages container.
 
 ## Contact
 
