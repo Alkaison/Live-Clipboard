@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --primary-color: #003049;
+  --secondary-color: #1d3557;
+  --font-color: #ffffff;
+}
+/* Light theme */
+.light-theme {
+  --primary-color: #DCEFFA;
+  --secondary-color: #79cff5;
+  --font-color: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--primary-color);
+  transition: color .5s, background-color .5s;
+}
