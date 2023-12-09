@@ -1,8 +1,8 @@
 # Live Clipboard
 
-![Live Clipboard](https://github.com/Alkaison/Live-Clipboard/assets/98116504/91fd6f21-d09b-47ff-8b02-d565ad26f4eb)
+[![Live Clipboard](https://github.com/Alkaison/Live-Clipboard/assets/98116504/91fd6f21-d09b-47ff-8b02-d565ad26f4eb)](https://live-clipboard.netlify.app/)
 
-Welcome to Live Clipboard, an exciting open-source project! We're thrilled to have you join us on this journey to create a web app using Firebase Realtime Database.
+Welcome to Live Clipboard, an exciting open-source project! We're thrilled to have you join us on this journey to create a web app using Firebase Realtime Database. Checkout: https://live-clipboard.netlify.app/
 
 ![Stars](https://img.shields.io/github/stars/Alkaison/Live-Clipboard.svg)
 ![Forks](https://img.shields.io/github/forks/Alkaison/Live-Clipboard.svg)
