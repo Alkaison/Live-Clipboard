@@ -20,9 +20,11 @@ function ClipField() {
     const enteredValue = textInputFieldRef.current.value;
 
     // Set a new timeout
-    timeoutId = setTimeout(() => {
-      updateValueInDatabase(enteredValue);
-    }, 500);
+    if (!(enteredValue.trim() === "")) {
+      timeoutId = setTimeout(() => {
+        updateValueInDatabase(enteredValue);
+      }, 500);
+    }
   };
 
   // onValue listener for value update
