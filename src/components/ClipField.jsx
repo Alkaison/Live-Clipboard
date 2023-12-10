@@ -17,7 +17,7 @@ function ClipField() {
 
   const handleValueChange = () => {
     clearTimeout(timeoutId);
-    const enteredValue = textInputFieldRef.current.value.trim();
+    const enteredValue = textInputFieldRef.current.value;
 
     // Set a new timeout
     timeoutId = setTimeout(() => {
