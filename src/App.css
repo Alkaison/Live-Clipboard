@@ -277,6 +277,7 @@
   font-weight: bold;
   font-family: "Poppins", sans-serif;
   letter-spacing: 1.8px;
+  cursor: pointer;
 }
 #clip-status {
   padding: 2px 8px;

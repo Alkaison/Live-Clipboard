@@ -21,6 +21,10 @@ function ClipNavbar() {
     });
   };
 
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(code);
+  };
+
   // validate users joining code and set preferred theme
   useEffect(() => {
     const validateJoiningCode = (joiningCode) => {
@@ -82,7 +86,11 @@ function ClipNavbar() {
             alt={isDark ? "Dark Theme" : "Light Theme"}
             onClick={toggleTheme}
           />
-          <span title="Instant Sharing Mode" id="clip-code">
+          <span
+            title="Click to Copy"
+            id="clip-code"
+            onClick={handleCopyCode}
+          >
             {code}
           </span>
         </div>
