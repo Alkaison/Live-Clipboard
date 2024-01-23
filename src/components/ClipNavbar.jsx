@@ -22,7 +22,7 @@ function ClipNavbar() {
   };
 
   const handleCopyCode = () => {
-    navigator.clipboard.writeText(code);
+    navigator.clipboard.writeText(`https://live-clipboard.netlify.app/${code}`);
   };
 
   // validate users joining code and set preferred theme
@@ -86,12 +86,8 @@ function ClipNavbar() {
             alt={isDark ? "Dark Theme" : "Light Theme"}
             onClick={toggleTheme}
           />
-          <span
-            title="Click to Copy"
-            id="clip-code"
-            onClick={handleCopyCode}
-          >
-            {code}
+          <span title="Click to Copy" id="clip-code" onClick={handleCopyCode}>
+            {code} <img src="assets/copy.svg" alt="Copy Icon" />
           </span>
         </div>
       </div>

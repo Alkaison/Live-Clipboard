@@ -269,6 +269,9 @@
 }
 .status .cp-code span {
   padding: 8px 28px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   white-space: nowrap;
   background-color: #00b4d8;
   border-radius: 20px;
@@ -278,6 +281,17 @@
   font-family: "Poppins", sans-serif;
   letter-spacing: 1.8px;
   cursor: pointer;
+  transition: transform .14s linear, background-color .2s linear;
+}
+.status .cp-code span:hover {
+  background-color: #00b4d8bb;
+}
+.status .cp-code span:active {
+  transform: scale(0.90);
+}
+.status .cp-code span img {
+  width: 16px;
+  height: 24px;
 }
 #clip-status {
   padding: 2px 8px;
