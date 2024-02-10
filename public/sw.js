@@ -12,7 +12,8 @@ this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheData).then((cache) => {
       cache.addAll([
-        "/static/js/bundle.js",
+        "/static/js/main.272abdc0.js",
+        "/static/css/main.72ee3a12.css",
         "/assets/clipboard-logo.webp",
         "/assets/clipboard.webp",
         "/assets/no-internet.webp",
@@ -22,6 +23,10 @@ this.addEventListener("install", (event) => {
         "/assets/sun.webp",
         "/assets/copy.svg",
         "/favicon/android-chrome-192x192.png",
+        "/favicon/android-chrome-512x512.png",
+        "/favicon/apple-touch-icon.png",
+        "/favicon/favicon-16x16.png",
+        "/favicon/favicon-32x32.png",
         "/favicon/favicon.ico",
         "/favicon/site.webmanifest",
         "/index.html",
