@@ -97,6 +97,11 @@ function Navbar() {
             Updates
           </Link>
         </li>
+        <li role="menuitem">
+          <Link to="/feedback" className="nav-items">
+            Feedback
+          </Link>
+        </li>
       </ul>
     </div>
   );
