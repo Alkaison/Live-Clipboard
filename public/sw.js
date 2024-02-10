@@ -1,5 +1,5 @@
 // cache app name with version stages
-const cacheData = "realtime-clipboard-cache-v1";
+const cacheData = "realtime-clipboard-cache-v2";
 
 // Add the URLs of the Google Fonts you want to cache here
 const fontUrls = [
