@@ -7,7 +7,23 @@ function ReleaseNotes() {
       <hr />
 
       <div className="version-release-container">
+        <h3>✨ Stable v1.1.1</h3>
+        <p>
+          <strong>Release Date</strong>: 10 Feb, 2024
+        </p>
+        <ul>
+          <li>Feat: Progressive Web App Support.</li>
+          <li>Feat: Offline Accessiblility using PWA service.</li>
+          <li>Fix: Updated Contributors data to static for quick access.</li>
+          <li>Fix: minor bugs.</li>
+        </ul>
+      </div>
+
+      <div className="version-release-container">
         <h3>✨ Migrated to React: v1.1.0</h3>
+        <p>
+          <strong>Release Date</strong>: 10 Dec, 2023
+        </p>
         <ul>
           <li>Feat: migrated the whole application to React.js & Firebase.</li>
           <li>Feat: secured Firebase app keys.</li>
@@ -17,6 +33,9 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>✨ Stable v1.0.0</h3>
+        <p>
+          <strong>Release Date</strong>: 08 Dec, 2023
+        </p>
         <ul>
           <li>Feat: Page OnLoad animation.</li>
           <li>Feat: Integration of Firebase Realtime Database.</li>
