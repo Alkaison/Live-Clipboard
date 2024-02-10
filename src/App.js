@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Updates from "./pages/Updates";
 import Clipboard from "./pages/Clipboard";
-import "./App.css";
+import Feedback from "./pages/Feedback";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route extact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/updates" element={<Updates />} />
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="/:code" element={<Clipboard />} />
         </Routes>
       </Router>

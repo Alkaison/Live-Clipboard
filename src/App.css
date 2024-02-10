@@ -368,8 +368,8 @@
   flex-direction: column;
   gap: 8px;
   color: var(--font-color);
-  border-radius: 32px;
   background-color: var(--secondary-color);
+  border-radius: 32px;
   transition: transform .3s;
 }
 .dev-card:hover {
@@ -603,5 +603,114 @@
   }
   .version-release-container ul {
     padding: 12px 0 12px 64px;
+  }
+}
+
+/* FeedbackForm page code */
+.feedback-container{
+  font-family: "Rubik", sans-serif;
+  color: var(--font-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 9%;
+}
+form{
+  width: 540px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+  border-radius: 30px;  
+}
+.feedback-form{
+  margin: 10px 0;
+  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.feedback-h1{
+  display: inline-flex;
+  justify-content: center;
+}
+.form-input {
+  width: 228px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+  outline: none;
+  height: 35px;
+}
+#email{
+  width: 100%;
+}
+textarea{
+  max-width: 495px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+}
+.form-btn1:hover{
+  letter-spacing: 2px;
+  background-color: rgb(16, 175, 238);
+}
+.form-btn1{
+  width: 220px; 
+  padding: 12px 12px;
+  border-radius: 10px;
+  border: transparent;
+  background-color: rgba(66, 165, 245, .8);
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: capitalize;
+  margin: 0 130px;
+  cursor: pointer;
+}
+.rating-star{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.rating-star span,label{
+  font-size: 35px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Feedback page responsive code */
+@media screen and (max-width : 600px) {
+  .feedback-container{
+    padding: 50px 22px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    padding: 20px;
+  }
+  .feedback-form , .form-input{
+    margin: 0;
+    width: 100%;
+  }
+  textarea{
+    width: 600px;
+    max-width: 100%;
+  }
+  .rating-star{
+    gap: 5px;
+    display: flex;
+
+  }
+  .rating-star span, label{
+    font-size: 30px;
   }
 }
