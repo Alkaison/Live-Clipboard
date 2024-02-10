@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, onDisconnect, onValue } from "firebase/database";
 
-function ClipNavbar() {
+function ClipNavbar({ internetStatus }) {
   const navigate = useNavigate();
   const { code } = useParams();
-  const statusColorRef = useRef(null);
   const [isDark, setIsDark] = useState(true);
   const [status, setStatus] = useState("Connecting...");
   const database = appDatabase;
@@ -57,7 +56,6 @@ function ClipNavbar() {
 
       if (isConnected) {
         setStatus("Connected");
-        statusColorRef.current.style.backgroundColor = "#affc41";
       } else {
         setStatus("Connecting...");
       }
@@ -73,8 +71,18 @@ function ClipNavbar() {
           <img src="./assets/clipboard-logo.webp" alt="Clipboard Logo" />
           <span>Clipboard</span>
         </Link>
-        <span id="clip-status" ref={statusColorRef}>
-          {status}
+        <span
+          id="clip-status"
+          style={{
+            backgroundColor: !internetStatus
+              ? "red"
+              : status === "Connected"
+              ? "#affc41"
+              : "",
+            color: !internetStatus ? "#ffffff" : "#000000",
+          }}
+        >
+          {!internetStatus ? "Offline" : status}
         </span>
       </div>
 

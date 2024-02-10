@@ -461,6 +461,55 @@
   content: '🛠️ ';
 }
 
+/* Offline App */
+.offline-app-container {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  color: var(--font-color);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+.offline-app-container h2 {
+  text-transform: capitalize;
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  line-height: 2.5rem;
+}
+.offline-app-container h2 span {
+  color: red;
+}
+.offline-app-container p {
+  max-width: 70%;
+  font-size: 18px;
+  letter-spacing: .7px;
+  line-height: 1.7rem;
+}
+.offline-app-container img {
+  margin-top: 16px;
+  width: 500px;
+  border-radius: 16px;
+}
+.offline-app-container button {
+  height: 50px;
+  padding: 0 20px;
+  color: #ffffff;
+  background-color: #064374;
+  outline: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: .7px;
+  cursor: pointer;
+}
+
 /* Responsive Updates Page */
 @media screen and (max-width: 750px) {
   .updates-container {
@@ -603,5 +652,24 @@
   }
   .version-release-container ul {
     padding: 12px 0 12px 64px;
+  }
+}
+
+/* Offline App */
+@media screen and (max-width: 786px) {
+  .offline-app-container {
+    padding: 32px 16px;
+    text-align: left;
+  }
+  .offline-app-container h2 {
+    font-size: 32px;
+  }
+  .offline-app-container p {
+    max-width: 100%;
+    font-size: 16px;
+  }
+  .offline-app-container img {
+    max-width: 500px;
+    width: 100%;
   }
 }
