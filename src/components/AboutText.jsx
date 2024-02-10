@@ -5,25 +5,21 @@ function AboutText() {
   const [developers, setDevelopers] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://api.github.com/repos/Alkaison/Live-Clipboard/contributors"
-        );
+    const fetchData = () => {
+      const details = [
+        {
+          login: "Alkaison",
+          html_url: "https://twitter.com/Alkaison",
+          contributions: "S+",
+        },
+        {
+          login: "Uzumaki",
+          html_url: "https://www.linkedin.com/in/amit-nare/",
+          contributions: "A+",
+        },
+      ];
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setDevelopers(data);
-      } catch (error) {
-        // Handle error - hideDevsSection
-        const devDetailsSection = document.querySelector(".devs-section");
-        if (devDetailsSection) {
-          devDetailsSection.style.display = "none";
-        }
-      }
+      setDevelopers(details);
     };
 
     fetchData();
@@ -57,12 +53,11 @@ function AboutText() {
       <br />
 
       <div className="devs-section">
-        <h3 className="devs-title">Thanks to this peoples! 🚀</h3>
+        <h3 className="devs-title">Thanks to the Creators! 🎉</h3>
         <div className="dev-card-container">
-          {developers.map((data) => (
+          {developers.map((data, index) => (
             <DevCard
-              key={data.login}
-              image={data.avatar_url}
+              key={index}
               name={data.login}
               link={data.html_url}
               commits={data.contributions}

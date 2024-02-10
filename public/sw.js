@@ -16,6 +16,8 @@ this.addEventListener("install", (event) => {
         "/assets/clipboard-logo.webp",
         "/assets/clipboard.webp",
         "/assets/no-internet.webp",
+        "/assets/avatar-Alkaison.webp",
+        "/assets/avatar-Uzumaki.webp",
         "/assets/moon.webp",
         "/assets/sun.webp",
         "/assets/copy.svg",
