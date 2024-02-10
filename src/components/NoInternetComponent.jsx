@@ -1,15 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 function NoInternetComponent() {
-  const [refreshing, setRefreshing] = useState(false);
-
-  const handleRefreshClick = () => {
-    setRefreshing(true);
-    const currentDomain = window.location.origin;
-    const dashPage = `${currentDomain}/`;
-    window.location.href = dashPage;
-  };
-
   return (
     <div className="offline-app-container">
       <h2>
@@ -22,10 +13,6 @@ function NoInternetComponent() {
       </p>
 
       <img src="assets/no-internet.webp" alt="No Internet Sticker" />
-
-      <button type="button" onClick={handleRefreshClick}>
-        {refreshing ? "Refreshing..." : "Refresh Page"}
-      </button>
     </div>
   );
 }
