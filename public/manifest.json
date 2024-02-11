@@ -1,7 +1,6 @@
 {
   "name": "Realtime Clipboard",
   "short_name": "Clipboard",
-  "start_url": "./index.html",
   "icons": [
     {
       "src": "favicon/android-chrome-192x192.png",
@@ -15,6 +14,7 @@
       "type": "image/png"
     }
   ],
+  "start_url": ".",
   "theme_color": "#1D3557",
   "background_color": "#003049",
   "display": "standalone"
