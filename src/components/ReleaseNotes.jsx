@@ -7,6 +7,18 @@ function ReleaseNotes() {
       <hr />
 
       <div className="version-release-container">
+        <h3>✨ Stable v1.1.2</h3>
+        <p>
+          <strong>Release Date</strong>: 12 Feb, 2024
+        </p>
+        <ul>
+          <li>Feat: Added user feedback page and connect EmailJS.</li>
+          <li>Fix: Progressive Web App Caching bugs.</li>
+          <li>Fix: minor bugs.</li>
+        </ul>
+      </div>
+
+      <div className="version-release-container">
         <h3>✨ Stable v1.1.1</h3>
         <p>
           <strong>Release Date</strong>: 10 Feb, 2024
