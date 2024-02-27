@@ -1,30 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DevCard from "./DevCard";
+import { developers } from "../scripts/developers";
 
 function AboutText() {
-  const [developers, setDevelopers] = useState([]);
-
-  useEffect(() => {
-    const fetchData = () => {
-      const details = [
-        {
-          login: "Alkaison",
-          html_url: "https://twitter.com/Alkaison",
-          contributions: "S+",
-        },
-        {
-          login: "Uzumaki",
-          html_url: "https://www.linkedin.com/in/amit-nare/",
-          contributions: "A+",
-        },
-      ];
-
-      setDevelopers(details);
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div className="about-us-section">
       <h1 className="about-us-title">What is Realtime Clipboard?</h1>
