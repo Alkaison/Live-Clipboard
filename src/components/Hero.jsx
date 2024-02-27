@@ -7,6 +7,7 @@ function Hero() {
   const [codeError, setCodeError] = useState(false);
   const JOINING_CODE_LENGTH = 5;
 
+  // generate random characters code of 5 length for room creation
   const generateJoiningCode = () => {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -26,6 +27,7 @@ function Hero() {
     setJoiningCode(value);
   };
 
+  // validate the user's joining code
   const validateJoiningCode = () => {
     const codeLength = joiningCode.length;
     const regExp = /^[a-zA-Z0-9]+$/;

@@ -9,6 +9,7 @@ function Navbar() {
     setNavbarActive(!isNavbarActive);
   };
 
+  // change the app's theme
   const toggleTheme = () => {
     setIsDark((prevIsDark) => {
       const newIsDark = !prevIsDark;
