@@ -737,7 +737,6 @@ form > p {
   width: 100%;
 }
 textarea{
-  max-width: 495px;
   background: white;
   border: none;
   border-radius: 8px;
