@@ -10,11 +10,13 @@ function ClipField() {
   const database = appDatabase; // Firebase database instance
   const roomRef = ref(database, `/${code}`); // Reference to the database
 
+  // update value and lastUpdated dateTime, for the specific room code
   const updateValueInDatabase = (value) => {
     const now = new Date().toISOString();
     update(roomRef, { text: value, lastUpdated: now });
   };
 
+  // avoid continuous data spamming with 0.5 seconds delay
   const handleValueChange = () => {
     clearTimeout(timeoutId);
     const enteredValue = textInputFieldRef.current.value;

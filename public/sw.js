@@ -12,6 +12,9 @@ const staticAssets = [
   "/assets/moon.webp",
   "/assets/sun.webp",
   "/assets/copy.svg",
+  "/assets/release-icon.svg",
+  "/assets/major-update-icon.svg",
+  "/assets/alpha-icon.svg",
   "/favicon/android-chrome-192x192.png",
   "/favicon/android-chrome-512x512.png",
   "/favicon/apple-touch-icon.png",
@@ -49,23 +52,21 @@ self.addEventListener("activate", (event) => {
 // Prioritize network for fetches with a fallback to cache
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    // Check if request is for an asset in the cache
     caches.match(event.request).then((cachedResponse) => {
-      // Cache hit (return cached response)
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      // Network request with caching
-      return fetch(event.request).then((fetchResponse) => {
-        const clonedResponse = fetchResponse.clone(); // Clone for caching before use
-
-        caches.open(cacheDataName).then((cache) => {
-          cache.put(event.request, clonedResponse); // Cache the cloned response
+      const networkFetch = fetch(event.request)
+        .then((response) => {
+          // update the cache with a clone of the network response
+          const responseClone = response.clone();
+          caches.open(cacheDataName).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+          return response;
+        })
+        .catch(function (reason) {
+          console.error("ServiceWorker fetch failed: ", reason);
         });
-
-        return fetchResponse; // Return the original response for immediate use
-      });
+      // prioritize cached response over network
+      return cachedResponse || networkFetch;
     })
   );
 });

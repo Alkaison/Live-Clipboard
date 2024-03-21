@@ -39,6 +39,10 @@ Welcome, amazing developers! 👋 We are delighted to introduce the **Live Clipb
 
   - Access Live Clipboard across devices with its responsive design, providing a consistent and enjoyable experience.
 
+- **PWA Functionality**
+
+  - The Progressive Web App (PWA) version of Live Clipboard allows users to install the app in their devices and use it as an application without the need to open your browser everytime.
+
 - **Community-Driven Development**
   - Contribute to a vibrant community of developers, shaping the future of Live Clipboard collaboratively.
 

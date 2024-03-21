@@ -441,10 +441,17 @@
   animation: .5s fadeInUp;
 }
 .version-release-container h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--font-color);
   font-size: 24px;
   font-family: "Rubik", sans-serif;
   letter-spacing: 1.4px;
+}
+.version-release-container h3 > img {
+  width: 32px;
+  height: 32px;
 }
 .version-release-container p {
   margin: 3px 0 0 42px;

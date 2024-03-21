@@ -11,6 +11,7 @@ function ClipNavbar({ internetStatus }) {
   const database = appDatabase;
   const roomRef = ref(database, `/${code}`); // Reference to the database
 
+  // change the app's theme
   const toggleTheme = () => {
     setIsDark((prevIsDark) => {
       const newIsDark = !prevIsDark;
@@ -20,6 +21,7 @@ function ClipNavbar({ internetStatus }) {
     });
   };
 
+  // copy the room's URL into user's clipboard
   const handleCopyCode = () => {
     navigator.clipboard.writeText(`https://live-clipboard.netlify.app/${code}`);
   };
@@ -71,6 +73,7 @@ function ClipNavbar({ internetStatus }) {
           <img src="./assets/clipboard-logo.webp" alt="Clipboard Logo" />
           <span>Clipboard</span>
         </Link>
+
         <span
           id="clip-status"
           style={{
@@ -94,6 +97,7 @@ function ClipNavbar({ internetStatus }) {
             alt={isDark ? "Dark Theme" : "Light Theme"}
             onClick={toggleTheme}
           />
+
           <span title="Click to Copy" id="clip-code" onClick={handleCopyCode}>
             {code} <img src="assets/copy.svg" alt="Copy Icon" />
           </span>
