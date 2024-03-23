@@ -93,13 +93,17 @@ function ClipNavbar({ internetStatus }) {
         <div className="cp-code">
           <img
             className="theme"
-            src={isDark ? "assets/moon.png" : "assets/sun.webp"}
+            src={isDark ? "assets/moon.webp" : "assets/sun.webp"}
             alt={isDark ? "Dark Theme" : "Light Theme"}
             onClick={toggleTheme}
           />
 
-          <span title="Click to Copy" id="clip-code" onClick={handleCopyCode}>
-            {code} <img src="assets/network.png" alt="Copy Icon" />
+          <span
+            title="Click to copy the link to share with your friends"
+            id="clip-code"
+            onClick={handleCopyCode}
+          >
+            {code} <img src="assets/network.webp" alt="Copy Icon" />
           </span>
         </div>
       </div>

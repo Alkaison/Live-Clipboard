@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Hero() {
@@ -41,11 +41,6 @@ function Hero() {
       setCodeError(true);
     }
   };
-
-  const [showRating, setText] = useState("");
-  useEffect(() => {
-    setText("4.2/5  (50+ reviews)");
-  }, []);
 
   return (
     <div className="body-container">
@@ -104,16 +99,20 @@ function Hero() {
           </button>
         </div>
       </div>
-      <div className="showStar">
-        <div>
-          <h4 className="showRating">Rating : </h4>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-        </div>
-        <h4 className="showRating">{showRating} </h4>
+
+      <div className="showStar-container" onClick={() => navigate("/feedback")}>
+        <h3>
+          Rated: 4.8 / 5{" "}
+          <span
+            style={{
+              cursor: "pointer",
+              color: "gold",
+            }}
+          >
+            &#9733;
+          </span>{" "}
+          (18+ Reviews)
+        </h3>
       </div>
     </div>
   );

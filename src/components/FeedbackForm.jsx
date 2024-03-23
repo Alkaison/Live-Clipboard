@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 export default function FeedbackForm() {
   const form = useRef();
   const requestActive = useRef(null);
+  const [loader, setLoader] = useState(false);
   const [rating, setRating] = useState(0);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
 
@@ -17,6 +18,8 @@ export default function FeedbackForm() {
     setFormSubmitMessage("");
 
     if (rating) {
+      setLoader(true);
+
       const secret = {
         service: process.env.REACT_APP_EMAILJSSERVICE_KEY,
         template: process.env.REACT_APP_EMAILJSTEMPLATE_KEY,
@@ -34,6 +37,8 @@ export default function FeedbackForm() {
             () => {
               setFormSubmitMessage("Thank You! Your feedback is sent 🚀");
               form.current.reset();
+              setRating(0);
+              setLoader(false);
               requestActive.current = false;
             },
             (error) => {
@@ -41,6 +46,7 @@ export default function FeedbackForm() {
                 "Oops! Couldn't sent your feedback. Please try again."
               );
               requestActive.current = false;
+              setLoader(false);
             }
           );
       }
@@ -53,6 +59,7 @@ export default function FeedbackForm() {
     <div className="feedback-container">
       <form ref={form} onSubmit={sendEmail}>
         <h1 className="feedback-h1">User Feedback</h1>
+        <p>Let us know how's your experience with our platform</p>
 
         <div className="feedback-form">
           <input
@@ -115,9 +122,14 @@ export default function FeedbackForm() {
           </div>
         </div>
 
-        <button className="form-btn1" type="submit" value="Submit">
+        <button
+          className="form-btn1"
+          type="submit"
+          value="Submit"
+          onClick={() => setFormSubmitMessage("")}
+        >
           Submit
-          {requestActive.current ? (
+          {loader ? (
             <div className="loader"></div>
           ) : (
             <svg

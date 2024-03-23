@@ -61,7 +61,7 @@
   border-bottom: 2px solid var(--primary-color);
 }
 .theme {
-  width: 35px;
+  width: 30px;
   height: 30px;
   position: relative;
   top: 2px;
@@ -115,7 +115,7 @@
 
 /* Body */
 .body-container {
-  padding: 32px;
+  padding: 32px 32px 0 32px;
   margin: 0 0 32px 0;
   display: flex;
   justify-content: flex-start;
@@ -239,29 +239,39 @@
 .btn-2:hover {
   background-color: rgba(66, 165, 245, .8);
 }
-.showRating{
-  font-family: "Poppins", sans-serif;
-  letter-spacing: .7px;
-  color: var(--font-color);
-}
-.showStar{
+/* Rating Stars Container At Home Page */
+.showStar-container {
   margin-top: 50px;
   gap: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: 1.2s fadeInUp;
+  cursor: pointer;
 }
-.showStar div{
+.showStar-container h3 {
+  padding: 4px 16px;
   display: flex;
-  gap: 3px;
-  justify-content: center;
   align-items: center;
+  gap: 6px;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--font-color);
+  border: 1.5px solid #064374;
+  border-radius: 32px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  letter-spacing: .7px;
+  transition: border .3s ease-in-out;
 }
-.checked {
-  color: orange;
+.showStar-container h3 span {
+  font-size: 24px;
 }
-
+.showStar-container h3:hover {
+  border: 1.5px solid #00B4D8;
+}
 /* clipboard page code here */
 .status{
   width: 100%;
@@ -292,30 +302,31 @@
   gap: 16px;
 }
 .status .cp-code span {
-  padding: 8px 28px;
+  padding: 8px 20px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   white-space: nowrap;
   background-color: #00b4d8;
-  border-radius: 20px;
+  border-radius: 40px;
   font-weight: normal;
   font-size: 18px;
   font-weight: bold;
   font-family: "Poppins", sans-serif;
   letter-spacing: 1.8px;
   cursor: pointer;
-  transition: transform .14s linear, background-color .2s linear;
+  transition: transform .1s ease-in-out, background-color .2s linear;
 }
 .status .cp-code span:hover {
   background-color: #00b4d8bb;
 }
 .status .cp-code span:active {
-  transform: scale(0.90);
+  transform: scale(0.9);
 }
 .status .cp-code span img {
-  width: 30px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
 }
 #clip-status {
   padding: 2px 8px;
@@ -477,6 +488,7 @@
 .version-release-container h3 > img {
   width: 32px;
   height: 32px;
+  pointer-events: none;
 }
 .version-release-container p {
   margin: 3px 0 0 42px;
@@ -532,6 +544,7 @@
   margin-top: 16px;
   width: 500px;
   border-radius: 16px;
+  pointer-events: none;
 }
 .offline-app-container button {
   height: 50px;
@@ -732,7 +745,7 @@ form{
   gap: 16px;
   display: flex;
   flex-direction: column;
-  padding: 30px 30px;
+  padding: 30px;
   color: var(--font-color);
   background-color: var(--secondary-color);
   border-radius: 30px;  

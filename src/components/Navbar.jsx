@@ -78,7 +78,7 @@ function Navbar() {
         <li role="menuitem">
           <img
             className="theme"
-            src={isDark ? "assets/moon.png" : "assets/sun.webp"}
+            src={isDark ? "assets/moon.webp" : "assets/sun.webp"}
             alt={isDark ? "Dark Theme" : "Light Theme"}
             onClick={toggleTheme}
           />
