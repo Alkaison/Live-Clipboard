@@ -19,6 +19,7 @@
 .nav-title img {
   width: 50px;
   height: 50px;
+  pointer-events: none;
 }
 .nav-title span {
   color: var(--font-color);
@@ -60,7 +61,7 @@
   border-bottom: 2px solid var(--primary-color);
 }
 .theme {
-  width: 30px;
+  width: 35px;
   height: 30px;
   position: relative;
   top: 2px;
@@ -122,6 +123,7 @@
   flex-direction: column;
 }
 .body-container .img {
+  pointer-events: none;
   height: 300px;
   aspect-ratio: 1/1;
 }
@@ -237,6 +239,28 @@
 .btn-2:hover {
   background-color: rgba(66, 165, 245, .8);
 }
+.showRating{
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .7px;
+  color: var(--font-color);
+}
+.showStar{
+  margin-top: 50px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.showStar div{
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+}
+.checked {
+  color: orange;
+}
 
 /* clipboard page code here */
 .status{
@@ -290,7 +314,7 @@
   transform: scale(0.90);
 }
 .status .cp-code span img {
-  width: 16px;
+  width: 30px;
   height: 24px;
 }
 #clip-status {
@@ -384,6 +408,7 @@
   border-bottom: 3px solid transparent;
   border-left: 3px solid transparent;
   border-radius: 50%;
+  pointer-events: none;
 }
 .dev-card p {
   color: var(--font-color);
@@ -707,7 +732,7 @@ form{
   gap: 16px;
   display: flex;
   flex-direction: column;
-  padding: 20px 30px;
+  padding: 30px 30px;
   color: var(--font-color);
   background-color: var(--secondary-color);
   border-radius: 30px;  
@@ -716,6 +741,9 @@ form > p {
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   letter-spacing: .7px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 .feedback-form{
   margin: 10px 0;
@@ -744,7 +772,6 @@ form > p {
   width: 100%;
 }
 textarea{
-  max-width: 495px;
   background: white;
   border: none;
   border-radius: 8px;
@@ -812,7 +839,7 @@ textarea{
 .rating-star{
   display: flex;
   gap: 16px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
   letter-spacing: .7px;
