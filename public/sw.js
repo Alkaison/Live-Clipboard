@@ -9,6 +9,7 @@ const staticAssets = [
   "/assets/no-internet.webp",
   "/assets/avatar-Alkaison.webp",
   "/assets/avatar-Uzumaki.webp",
+  "/assets/network.webp",
   "/assets/moon.webp",
   "/assets/sun.webp",
   "/assets/copy.svg",
