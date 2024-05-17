@@ -12,8 +12,8 @@ function ClipField() {
 
   // update value and lastUpdated dateTime, for the specific room code
   const updateValueInDatabase = (value) => {
-    const now = new Date().toISOString();
-    update(roomRef, { text: value, lastUpdated: now });
+    const now = new Date().toISOString(); // date stored
+    update(roomRef, { text: value, lastUpdated: now }); // data store into firebase
   };
 
   // avoid continuous data spamming with 0.5 seconds delay
@@ -24,11 +24,12 @@ function ClipField() {
     // Set a new timeout
     if (!(enteredValue.trim() === "")) {
       timeoutId = setTimeout(() => {
-        updateValueInDatabase(enteredValue);
+        updateValueInDatabase(enteredValue); //data store
       }, 500);
     }
   };
 
+  // get text in firebase and show on clipbord
   // onValue listener for value update
   useEffect(() => {
     const onValueCallback = (snapshot) => {
