@@ -338,15 +338,15 @@
   letter-spacing: .5px;
 }
 #input-box{
-  width: 100%;
+  width: 75%;
   min-height: calc(100vh - 100px);
   padding: 16px 12px;
   resize: none;
   color: var(--font-color);
   outline: transparent;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
   border-radius: 0;
-  background: transparent;
+  /* background: transparent; */
   font-size: 15px;
   font-family: "Poppins", sans-serif;
   line-height: 1.5rem;
@@ -894,4 +894,69 @@ textarea{
     display: flex;
     flex-direction: column;
   }
+}
+
+
+.file-container{
+  background-color: white;
+  border: 2px solid red;
+  width: 30%;
+  max-width: 400px;
+  padding: 10px 0;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 5em;
+  left: 87.5%;
+}
+.file-input[type ="file"]{
+  display: none;
+}
+#file-label{
+  display: block;
+  position: relative;
+  background-color: yellow;
+  color: red;
+  font-size: 1.1em;
+  text-align: center;
+  width: 16em;
+  padding: 1em 0;
+  cursor: pointer;
+  margin: 0 auto 1em auto;
+}
+.active{
+  border: 2px dashed blue;
+}
+#error{
+  text-align: center;
+  color: blue;
+}
+#image-display{
+  /* border: 2px solid green; */
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+  gap: 1.25em;
+  flex-wrap: wrap;
+}
+#image-display figure{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  column-gap: 20px;
+  /* border: 2px solid yellow; */
+}
+#image-display img{
+  width: 30%;
+  /* aspect-ratio: 2/1; */
+}
+#image-display figcaption{
+  position: relative;
+  font-size: 0.8em;
+  text-align: center;
+  color: black;
+
 }
