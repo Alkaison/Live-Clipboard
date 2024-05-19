@@ -338,8 +338,8 @@
   letter-spacing: .5px;
 }
 #input-box{
-  width: 100%;
-  min-height: calc(100vh - 100px);
+  width: -webkit-fill-available;
+  min-height: calc(100vh - 85px);
   padding: 16px 12px;
   resize: none;
   color: var(--font-color);
@@ -893,5 +893,233 @@ textarea{
     gap: 5px;
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* file transfer css here */
+.file-container{
+  border: 1px solid rgb(182, 178, 178);
+  width: 25%;
+  max-height: 750px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-input[type ="file"]{
+  display: none;
+}
+#upload-img{
+  width: 150px;
+}
+#file-label{
+  display: block;
+  position: relative;
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  color: var(--font-color);
+  font-size: 1.1em;
+  text-align: center;
+  padding: 1em 0;
+  cursor: pointer;
+  margin: 0 auto 1em auto;
+}
+.imageDrop-active{
+  border: 2px dashed rgb(255, 255, 255);
+  background: rgb(161, 157, 157);
+}
+#error{
+  font-family: "Rubik", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+}
+#image-display{
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  gap: 1.25em;
+  flex-wrap: wrap;
+}
+#image-display figure{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  column-gap: 10px;
+}
+#image-display img{
+  width: 30%;
+  aspect-ratio: 3/2;
+  object-fit: fill;
+}
+#image-display figcaption{
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  color: var(--font-color);
+  width: 120px;
+  position: relative;
+  font-size: 0.8em;
+  text-align: center;
+  text-align: start;
+}
+
+.Clipboard-container{
+  display: flex;
+}
+.input{
+  width: 75%;
+}
+
+.file-download-Btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(27, 27, 27);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+}
+
+.svgIcon {
+  fill: rgb(214, 178, 255);
+}
+
+/* bottom line of download button */
+.icon2 {
+  width: 18px;
+  height: 5px;
+  border-bottom: 2px solid rgb(182, 143, 255);
+  border-left: 2px solid rgb(182, 143, 255);
+  border-right: 2px solid rgb(182, 143, 255);
+}
+
+.tooltip {
+  position: absolute;
+  right: -105px;
+  opacity: 0;
+  background-color: rgb(12, 12, 12);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: .2s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: rgb(12, 12, 12);
+  background-size: 1000%;
+  background-position: center;
+  transform: rotate(45deg);
+  left: -5%;
+  transition-duration: .3s;
+}
+
+.file-download-Btn:hover .tooltip {
+  opacity: 1;
+  transition-duration: .3s;
+}
+
+.file-download-Btn:hover {
+  background-color: rgb(150, 94, 255);
+  transition-duration: .3s;
+}
+
+.file-download-Btn:hover .icon2 {
+  border-bottom: 2px solid rgb(235, 235, 235);
+  border-left: 2px solid rgb(235, 235, 235);
+  border-right: 2px solid rgb(235, 235, 235);
+}
+
+.file-download-Btn:hover .svgIcon {
+  fill: rgb(255, 255, 255);
+  animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* file delete button */
+.bin-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-color: rgb(27, 27, 27);
+  cursor: pointer;
+  border: none;
+  transition-duration: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.bin-bottom {
+  width: 15px;
+  z-index: 2;
+}
+.bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+  z-index: 2;
+}
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+.bin-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+.bin-button:active {
+  transform: scale(0.9);
+}
+.garbage {
+  position: absolute;
+  width: 14px;
+  height: auto;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.bin-button:hover .garbage {
+  animation: throw 0.4s linear;
+}
+@keyframes throw {
+  from {
+    transform: translate(-400%, -700%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0%, 0%);
+    opacity: 1;
   }
 }
