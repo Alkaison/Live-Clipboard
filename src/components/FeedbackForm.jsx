@@ -21,9 +21,9 @@ export default function FeedbackForm() {
       setLoader(true);
 
       const secret = {
-        service: process.env.REACT_APP_EMAILJSSERVICE_KEY,
-        template: process.env.REACT_APP_EMAILJSTEMPLATE_KEY,
-        key: process.env.REACT_APP_EMAILJSAPIKEY,
+        service: import.meta.env.VITE_APP_EMAILJSSERVICE_KEY,
+        template: import.meta.env.VITE_APP_EMAILJSTEMPLATE_KEY,
+        key: import.meta.env.VITE_APP_EMAILJSAPIKEY,
       };
 
       if (!requestActive.current) {
