@@ -35,25 +35,41 @@ function ClipField() {
     }
   };
 
-  // get text in firebase and show on clipboard
-  // onValue listener for value update
-  useEffect(() => {
-    const onValueCallback = (snapshot) => {
-      if (snapshot.exists()) {
-        const { text } = snapshot.val() || "";
-        textInputFieldRef.current.value = text;
-      }
-    };
-
-    onValue(roomRef, onValueCallback);
-  }, [code, database, roomRef]);
-
   const imageExists = useCallback(
     (name, src) => {
       return images.some((image) => image.name === name && image.src === src);
     },
     [images]
   );
+
+  // upload the image to the cloud
+  const uploadImageOnCloudinary = async (imageData) => {
+    const payload = new FormData();
+
+    // Payload creation
+    payload.append("file", imageData);
+    payload.append(
+      "upload_preset",
+      process.env.CLOUDINARY_CLOUD_UPLOAD_PRESET_NAME
+    );
+    payload.append("cloud_name", process.env.CLOUDINARY_CLOUD_NAME);
+
+    // API Request
+    fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: "post",
+        body: payload,
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("Image Uploaded: ", response);
+      })
+      .catch((error) => {
+        console.log("Image Could Not be Uploaded: ", error);
+      });
+  };
 
   const fileHandler = useCallback(
     (file, name, type) => {
@@ -73,6 +89,7 @@ function ClipField() {
 
         if (!imageExists(name, src)) {
           setImages((prevImages) => [{ src: src, name: name }]);
+          uploadImageOnCloudinary(src);
         } else {
           error.innerHTML = "Image already exists";
         }
@@ -80,6 +97,17 @@ function ClipField() {
     },
     [imageExists]
   );
+
+  const handleDeleteImage = (index) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  };
+
+  const handleDownloadImage = (src, name) => {
+    const link = document.createElement("a");
+    link.href = src;
+    link.download = name;
+    link.click();
+  };
 
   // Set up file input event listener
   useEffect(() => {
@@ -100,6 +128,19 @@ function ClipField() {
       };
     }
   }, [fileHandler]);
+
+  // get text in firebase and show on clipboard
+  // onValue listener for value update
+  useEffect(() => {
+    const onValueCallback = (snapshot) => {
+      if (snapshot.exists()) {
+        const { text } = snapshot.val() || "";
+        textInputFieldRef.current.value = text;
+      }
+    };
+
+    onValue(roomRef, onValueCallback);
+  }, [code, database, roomRef]);
 
   // Set up drag and drop event listeners
   useEffect(() => {
@@ -149,17 +190,6 @@ function ClipField() {
       };
     }
   }, [fileHandler]);
-
-  const handleDeleteImage = (index) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
-
-  const handleDownloadImage = (src, name) => {
-    const link = document.createElement("a");
-    link.href = src;
-    link.download = name;
-    link.click();
-  };
 
   return (
     <div className="Clipboard-container">
