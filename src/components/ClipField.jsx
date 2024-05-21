@@ -20,36 +20,28 @@ function ClipField() {
   // update text value and lastUpdated dateTime, for the specific room code
   const updateValueInDatabase = (value) => {
     const now = new Date().toISOString().replace(/\.\d+Z$/, "Z"); // date stored in ISO format without milliseconds
-    update(roomRef, { text: value, lastUpdated: now }); // data store into firebase
+    update(roomRef, {
+      text: value,
+      images: firebaseData.images || [],
+      lastUpdated: now,
+    }); // data store into firebase
   };
 
   // update image value to firebase
   const addNewImagesValueInDatabase = (name, src, bytes, lastUpdated) => {
     const data = {
       text: textInputFieldRef.current.value,
-      images:
-        Array.isArray(firebaseData.images) && firebaseData.images.length > 0
-          ? [
-              ...firebaseData.images,
-              {
-                name: name,
-                src: src,
-                bytes: bytes,
-                downloads: 0,
-                deleted: false,
-                lastUpdated: lastUpdated,
-              },
-            ]
-          : [
-              {
-                name: name,
-                src: src,
-                bytes: bytes,
-                downloads: 0,
-                deleted: false,
-                lastUpdated: lastUpdated,
-              },
-            ],
+      images: [
+        ...(firebaseData.images || []),
+        {
+          name: name,
+          src: src,
+          bytes: bytes,
+          downloads: 0,
+          deleted: false,
+          lastUpdated: lastUpdated,
+        },
+      ],
       lastUpdated: lastUpdated,
     };
 
@@ -156,7 +148,6 @@ function ClipField() {
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log("Image Uploaded: ", response);
         addNewImagesValueInDatabase(
           name,
           response.url,
@@ -165,7 +156,6 @@ function ClipField() {
         );
       })
       .catch((error) => {
-        console.log("Image Could Not be Uploaded: ", error);
         setImages([]);
         errorRef.textContent = "Image Could Not be Uploaded.";
       });
@@ -267,9 +257,10 @@ function ClipField() {
     const onValueCallback = (snapshot) => {
       if (snapshot.exists()) {
         const snapShotData = snapshot.val();
-        textInputFieldRef.current.value = snapShotData?.text || "";
+        textInputFieldRef.current.value = snapShotData.text || "";
 
-        console.log("onValueCallback", snapShotData);
+        // update firebase data to keep track of changes
+        setFirebaseData(snapshot.val());
 
         // update image, if found
         if (
@@ -299,9 +290,6 @@ function ClipField() {
           // set the latest image
           setImages([latestImage]);
         }
-
-        // update firebase data to keep track of changes
-        setFirebaseData(snapShotData);
       }
     };
 
