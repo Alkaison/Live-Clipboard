@@ -114,6 +114,13 @@ function Hero() {
           (200+ Reviews)
         </h3>
       </div>
+
+      <div className="new-features" onClick={generateJoiningCode}>
+        <h3>
+          <span>Note : New File Transfer Feature Added 🚀</span>
+        </h3>
+      </div>
+
     </div>
   );
 }

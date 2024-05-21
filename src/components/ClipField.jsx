@@ -90,7 +90,10 @@ function ClipField() {
         const src = reader.result;
 
         if (!imageExists(name, src)) {
-          setImages((prevImages) => [{ src: src, name: name }]);
+          setImages((prevImages) => {
+            const newImages = [...prevImages, { src: src, name: name }];
+            return newImages.slice(-2); // Keep only the last two images
+          });
           uploadImageOnCloudinary(src);
         } else {
           error.innerHTML = "Image already exists";
@@ -216,6 +219,7 @@ function ClipField() {
               name="file-input"
               id="upload-btn"
               className="file-input"
+              multiple
               accept="image/*"
               max="5242880" // 5 MB in bytes
               ref={uploadBtnRef}
@@ -236,7 +240,7 @@ function ClipField() {
         <div id="error" ref={errorRef}></div>
 
         {/* Uploaded Images Container */}
-        {images.length === 1 && (
+        {images.length > 0 && (
           <div id="image-display">
             {/* Render Images */}
             {images.map((image, index) => (
@@ -267,10 +271,15 @@ function ClipField() {
         )}
 
         {/* Message for Information */}
-        {images.length === 1 && (
+        {images.length > 0 && (
           <div className="message-text-information-img-upload">
             <span>Info:</span> Please note that we currently support sharing
-            only one image at a time.
+            only two image at a time.
+          </div>
+        )}
+        {images.length > 0 && (
+          <div className="message-text-information-img-upload">
+            <span>Note:</span> You can Share multiple images 1 by 1.
           </div>
         )}
       </div>
