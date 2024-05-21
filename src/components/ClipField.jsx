@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, update, onValue } from "firebase/database";
+import { TailSpin } from "react-loader-spinner";
 import SvgDelete from "./SvgDelete";
 import SvgDownload from "./SvgDownload";
 
@@ -16,6 +17,7 @@ function ClipField() {
   const roomRef = ref(database, `/${code}`); // Reference to the database
   const [firebaseData, setFirebaseData] = useState({});
   const [images, setImages] = useState([]); // State to store the list of uploaded images
+  const [loader, setLoader] = useState(false);
 
   // update text value and lastUpdated dateTime, for the specific room code
   const updateValueInDatabase = (value) => {
@@ -46,6 +48,7 @@ function ClipField() {
     };
 
     update(roomRef, data);
+    setLoader(false);
   };
 
   // update images properties into database
@@ -158,6 +161,7 @@ function ClipField() {
       .catch((error) => {
         setImages([]);
         errorRef.textContent = "Image Could Not be Uploaded.";
+        setLoader(false);
       });
   };
 
@@ -166,12 +170,19 @@ function ClipField() {
     (file, name, type) => {
       const error = errorRef.current;
 
+      if (images.length === 1) {
+        error.textContent =
+          "Only one image can be uploaded at a time. Read the note below.";
+        return false;
+      }
+
       if (type.split("/")[0] !== "image") {
         error.textContent = "Please upload an image.";
         return false;
       }
 
       error.textContent = "";
+      setLoader(true);
       let reader = new FileReader();
       reader.readAsDataURL(file);
 
@@ -183,6 +194,7 @@ function ClipField() {
           uploadImageOnCloudinary(src, name);
         } else {
           error.textContent = "Image already exists";
+          setLoader(false);
         }
       };
     },
@@ -393,38 +405,59 @@ function ClipField() {
             {/* Render Images */}
             {images.map((image, index) => (
               <div key={index}>
-                <img src={image.src} alt={image.name} />
-                <figcaption title={image.name}>{image.name}</figcaption>
+                <div className="uploaded-image-container">
+                  <img src={image.src} alt={image.name} />
 
-                <div className="images-action-buttons-container">
-                  <button
-                    className="file-download-Btn"
-                    onClick={() => handleDownloadImage(image.src, image.name)}
-                  >
-                    <SvgDownload />
-                    <span>Download</span>
-                  </button>
-
-                  <button
-                    className="bin-button"
-                    onClick={() => handleDeleteImage(image.src)}
-                  >
-                    <SvgDelete />
-                    <span>Delete</span>
-                  </button>
+                  {loader && (
+                    <div className="uploaded-image-loader-container">
+                      <TailSpin
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="#1d3557"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
+                      />
+                    </div>
+                  )}
                 </div>
+
+                {/* Render when the loader gets off */}
+                {!loader && (
+                  <>
+                    <figcaption title={image.name}>{image.name}</figcaption>
+
+                    <div className="images-action-buttons-container">
+                      <button
+                        className="file-download-Btn"
+                        onClick={() =>
+                          handleDownloadImage(image.src, image.name)
+                        }
+                      >
+                        <SvgDownload />
+                        <span>Download</span>
+                      </button>
+
+                      <button
+                        className="bin-button"
+                        onClick={() => handleDeleteImage(image.src)}
+                      >
+                        <SvgDelete />
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
         )}
 
         {/* Message for Information */}
-        {images.length === 1 && (
-          <div className="message-text-information-img-upload">
-            <span>Info:</span> Please note that we currently support sharing
-            only one image at a time.
-          </div>
-        )}
+        <div className="message-text-information-img-upload">
+          <span>Note:</span> Only one image can be shared at a time. Please
+          delete the current image before uploading a new one.
+        </div>
       </div>
     </div>
   );
