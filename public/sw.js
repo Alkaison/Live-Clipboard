@@ -1,9 +1,8 @@
-const cacheDataName = "realtime-clipboard-cache-v4";
+const cacheDataName = "realtime-clipboard-cache-v5";
 
 const staticAssets = [
-  // "/static/js/main.272abdc0.js",
-  // "/static/css/main.72ee3a12.css",
-  "/static/js/bundle.js",
+  "/assets/index.js",
+  "/assets/index.css",
   "/assets/clipboard-logo.webp",
   "/assets/clipboard.webp",
   "/assets/no-internet.webp",
@@ -12,6 +11,7 @@ const staticAssets = [
   "/assets/network.webp",
   "/assets/moon.webp",
   "/assets/sun.webp",
+  "/assets/upload.png",
   "/assets/copy.svg",
   "/assets/release-icon.svg",
   "/assets/major-update-icon.svg",
