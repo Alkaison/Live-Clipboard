@@ -8,8 +8,33 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/release-icon.svg" alt="Release v1.1.3" /> Stable
-          v1.1.3
+          <img
+            src="./assets/major-update-icon.svg"
+            alt="Release v1.2.0"
+            title="Major Release"
+          />{" "}
+          Feature Update: v1.2.0
+        </h3>
+        <p>
+          <strong>Release Date</strong>: 22 May, 2024
+        </p>
+        <ul>
+          <li>Feat: Realtime images sharing feature.</li>
+          <li>Feat: New UI for the Clipboard page.</li>
+          <li>Feat: download the shared images instantly. </li>
+          <li>Feat: Share text and images in real-time.</li>
+          <li>Fix: minor bugs.</li>
+        </ul>
+      </div>
+
+      <div className="version-release-container">
+        <h3>
+          <img
+            src="./assets/release-icon.svg"
+            alt="Release v1.1.3"
+            title="Stable Release"
+          />{" "}
+          Stable v1.1.3
         </h3>
         <p>
           <strong>Release Date</strong>: 27 Feb, 2024
@@ -20,17 +45,18 @@ function ReleaseNotes() {
           <li>
             Chore: added comments into components for better understanding.
           </li>
-          <li>
-            Chore: removed simple-star-rating and web-vitals packages and
-            updated other packages.
-          </li>
+          <li>Chore: removed simple-star-rating and web-vitals packages.</li>
         </ul>
       </div>
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/release-icon.svg" alt="Release v1.1.2" /> Stable
-          v1.1.2
+          <img
+            src="./assets/release-icon.svg"
+            alt="Release v1.1.2"
+            title="Stable Release"
+          />{" "}
+          Stable v1.1.2
         </h3>
         <p>
           <strong>Release Date</strong>: 12 Feb, 2024
@@ -44,8 +70,12 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/release-icon.svg" alt="Release v1.1.1" /> Stable
-          v1.1.1
+          <img
+            src="./assets/release-icon.svg"
+            alt="Release v1.1.1"
+            title="Stable Release"
+          />{" "}
+          Stable v1.1.1
         </h3>
         <p>
           <strong>Release Date</strong>: 10 Feb, 2024
@@ -60,7 +90,11 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/major-update-icon.svg" alt="Release v1.1.0" />
+          <img
+            src="./assets/major-update-icon.svg"
+            alt="Release v1.1.0"
+            title="Major Release"
+          />
           Migrated to React: v1.1.0
         </h3>
         <p>
@@ -75,7 +109,11 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/major-update-icon.svg" alt="Release v1.0.0" />
+          <img
+            src="./assets/major-update-icon.svg"
+            alt="Release v1.0.0"
+            title="Major Release"
+          />
           Stable v1.0.0
         </h3>
         <p>
@@ -90,7 +128,12 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/alpha-icon.svg" alt="Release v0.2" /> Alpha v0.2
+          <img
+            src="./assets/alpha-icon.svg"
+            alt="Release v0.2"
+            title="Alpha Release"
+          />{" "}
+          Alpha v0.2
         </h3>
         <ul>
           <li>Feat: Light Theme</li>
@@ -103,7 +146,12 @@ function ReleaseNotes() {
 
       <div className="version-release-container">
         <h3>
-          <img src="./assets/alpha-icon.svg" alt="Release v0.1" /> Alpha v0.1
+          <img
+            src="./assets/alpha-icon.svg"
+            alt="Release v0.1"
+            title="Alpha Release"
+          />{" "}
+          Alpha v0.1
         </h3>
         <ul>
           <li>Feat: Home Page</li>
