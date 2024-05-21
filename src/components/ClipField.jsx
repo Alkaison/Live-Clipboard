@@ -24,7 +24,7 @@ function ClipField() {
   };
 
   // update image value to firebase
-  const updateImagesValueInDatabase = (name, src, bytes, lastUpdated) => {
+  const addNewImagesValueInDatabase = (name, src, bytes, lastUpdated) => {
     const data = {
       text: textInputFieldRef.current.value,
       images:
@@ -35,6 +35,8 @@ function ClipField() {
                 name: name,
                 src: src,
                 bytes: bytes,
+                downloads: 0,
+                deleted: false,
                 lastUpdated: lastUpdated,
               },
             ]
@@ -43,6 +45,8 @@ function ClipField() {
                 name: name,
                 src: src,
                 bytes: bytes,
+                downloads: 0,
+                deleted: false,
                 lastUpdated: lastUpdated,
               },
             ],
@@ -50,6 +54,61 @@ function ClipField() {
     };
 
     update(roomRef, data);
+  };
+
+  // update images properties into database
+  const updateImagesInDatabase = (imageSrc, action) => {
+    const now = new Date().toISOString().replace(/\.\d+Z$/, "Z");
+
+    if (action === "download") {
+      // update the image property of downloads to +1 in firebase
+      setFirebaseData((prev) => {
+        const imagesData = prev.images || [];
+
+        const updatedImagesData = imagesData.map((data) =>
+          data.src === imageSrc
+            ? { ...data, downloads: data.downloads + 1, lastUpdated: now }
+            : data
+        );
+
+        // structure the new data
+        const updatedData = {
+          ...prev,
+          images: updatedImagesData,
+          lastUpdated: now,
+        };
+
+        // update in firebase
+        update(roomRef, updatedData);
+
+        return updatedData;
+      });
+    } else if (action === "delete") {
+      // update the image property to deleted in firebase
+      setFirebaseData((prev) => {
+        const imagesData = prev.images || [];
+
+        const updatedImagesData = imagesData.map((data) =>
+          data.src === imageSrc
+            ? { ...data, deleted: true, lastUpdated: now }
+            : data
+        );
+
+        // structure the new data
+        const updatedData = {
+          ...prev,
+          images: updatedImagesData,
+          lastUpdated: now,
+        };
+
+        // update in firebase
+        update(roomRef, updatedData);
+
+        return updatedData;
+      });
+    } else {
+      return;
+    }
   };
 
   // avoid continuous data spamming with 0.5 seconds delay
@@ -98,7 +157,7 @@ function ClipField() {
       .then((response) => response.json())
       .then((response) => {
         console.log("Image Uploaded: ", response);
-        updateImagesValueInDatabase(
+        addNewImagesValueInDatabase(
           name,
           response.url,
           response.bytes,
@@ -141,8 +200,9 @@ function ClipField() {
   );
 
   // delete the image
-  const handleDeleteImage = (index) => {
+  const handleDeleteImage = (imageSrc) => {
     setImages([]);
+    updateImagesInDatabase(imageSrc, "delete");
   };
 
   // handle image downloading on client side for base64 data or external URL
@@ -177,6 +237,8 @@ function ClipField() {
       const downloadUrl = addAttachmentFlag(src, name);
       triggerDownload(downloadUrl);
     }
+
+    updateImagesInDatabase(src, "download");
   };
 
   // Set up file input event listener
@@ -216,12 +278,25 @@ function ClipField() {
           Array.isArray(snapShotData?.images) &&
           snapShotData?.images?.length > 0
         ) {
-          const latestImage = snapShotData.images.reduce((latest, current) =>
+          // get all unDeleted images
+          const unDeletedImages = snapShotData.images.filter(
+            (data) => !data.deleted
+          );
+
+          // return if no unDeleted images found
+          if (unDeletedImages.length === 0) {
+            setImages([]);
+            return;
+          }
+
+          // extract the latest uploaded images from unDeletedImages
+          const latestImage = unDeletedImages.reduce((latest, current) =>
             new Date(current.lastUpdated) > new Date(latest.lastUpdated)
               ? current
               : latest
           );
 
+          // set the latest image
           setImages([latestImage]);
         }
 
@@ -344,7 +419,7 @@ function ClipField() {
 
                   <button
                     className="bin-button"
-                    onClick={() => handleDeleteImage(index)}
+                    onClick={() => handleDeleteImage(image.src)}
                   >
                     <SvgDelete />
                     <span>Delete</span>
