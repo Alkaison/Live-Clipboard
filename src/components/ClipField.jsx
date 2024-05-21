@@ -14,12 +14,42 @@ function ClipField() {
   const fileContainerRef = useRef(null);
   const database = appDatabase; // Firebase database instance
   const roomRef = ref(database, `/${code}`); // Reference to the database
+  const [firebaseData, setFirebaseData] = useState({});
   const [images, setImages] = useState([]); // State to store the list of uploaded images
 
-  // update value and lastUpdated dateTime, for the specific room code
+  // update text value and lastUpdated dateTime, for the specific room code
   const updateValueInDatabase = (value) => {
-    const now = new Date().toISOString(); // date stored
+    const now = new Date().toISOString().replace(/\.\d+Z$/, "Z"); // date stored in ISO format without milliseconds
     update(roomRef, { text: value, lastUpdated: now }); // data store into firebase
+  };
+
+  // update image value to firebase
+  const updateImagesValueInDatabase = (name, src, bytes, lastUpdated) => {
+    const data = {
+      text: textInputFieldRef.current.value,
+      images:
+        Array.isArray(firebaseData.images) && firebaseData.images.length > 0
+          ? [
+              ...firebaseData.images,
+              {
+                name: name,
+                src: src,
+                bytes: bytes,
+                lastUpdated: lastUpdated,
+              },
+            ]
+          : [
+              {
+                name: name,
+                src: src,
+                bytes: bytes,
+                lastUpdated: lastUpdated,
+              },
+            ],
+      lastUpdated: lastUpdated,
+    };
+
+    update(roomRef, data);
   };
 
   // avoid continuous data spamming with 0.5 seconds delay
@@ -35,19 +65,20 @@ function ClipField() {
     }
   };
 
+  // check if the image at display is same as the new image
   const imageExists = useCallback(
-    (name, src) => {
-      return images.some((image) => image.name === name && image.src === src);
-    },
+    (name, src) =>
+      images.some((image) => image.name === name && image.src === src),
     [images]
   );
 
   // upload the image to the cloud
-  const uploadImageOnCloudinary = async (imageData) => {
+  const uploadImageOnCloudinary = async (src, name) => {
     const payload = new FormData();
 
     // Payload creation
-    payload.append("file", imageData);
+    payload.append("file", src);
+    payload.append("public_id", `${code}_${firebaseData?.images?.length || 0}`);
     payload.append(
       "upload_preset",
       import.meta.env.VITE_CLOUDINARY_CLOUD_UPLOAD_PRESET_NAME
@@ -67,22 +98,31 @@ function ClipField() {
       .then((response) => response.json())
       .then((response) => {
         console.log("Image Uploaded: ", response);
+        updateImagesValueInDatabase(
+          name,
+          response.url,
+          response.bytes,
+          response.created_at
+        );
       })
       .catch((error) => {
         console.log("Image Could Not be Uploaded: ", error);
+        setImages([]);
+        errorRef.textContent = "Image Could Not be Uploaded.";
       });
   };
 
+  // handle file uploading on client side
   const fileHandler = useCallback(
     (file, name, type) => {
       const error = errorRef.current;
 
       if (type.split("/")[0] !== "image") {
-        error.innerHTML = "Please upload an image.";
+        error.textContent = "Please upload an image.";
         return false;
       }
 
-      error.innerHTML = "";
+      error.textContent = "";
       let reader = new FileReader();
       reader.readAsDataURL(file);
 
@@ -90,25 +130,53 @@ function ClipField() {
         const src = reader.result;
 
         if (!imageExists(name, src)) {
-          setImages((prevImages) => [{ src: src, name: name }]);
-          uploadImageOnCloudinary(src);
+          setImages(() => [{ src: src, name: name }]);
+          uploadImageOnCloudinary(src, name);
         } else {
-          error.innerHTML = "Image already exists";
+          error.textContent = "Image already exists";
         }
       };
     },
     [imageExists]
   );
 
+  // delete the image
   const handleDeleteImage = (index) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    setImages([]);
   };
 
+  // handle image downloading on client side for base64 data or external URL
   const handleDownloadImage = (src, name) => {
     const link = document.createElement("a");
-    link.href = src;
-    link.download = name;
-    link.click();
+
+    // Function to trigger the download
+    const triggerDownload = (href) => {
+      link.href = href;
+      link.download = name;
+      link.click();
+    };
+
+    // Check if the URL is from Cloudinary and append fl_attachment
+    const addAttachmentFlag = (url, name) => {
+      const urlParts = url.split("/upload/");
+
+      // remove extension from file name
+      const fileName = name.split(".").slice(0, -1).join(".");
+
+      if (urlParts.length === 2) {
+        return `${urlParts[0]}/upload/fl_attachment:${fileName}/${urlParts[1]}`;
+      }
+      return url;
+    };
+
+    if (src.startsWith("data:image/")) {
+      // If src is base64 data, directly set the href to the base64 data
+      triggerDownload(src);
+    } else {
+      // If src is an external URL, try to fetch the image
+      const downloadUrl = addAttachmentFlag(src, name);
+      triggerDownload(downloadUrl);
+    }
   };
 
   // Set up file input event listener
@@ -136,13 +204,34 @@ function ClipField() {
   useEffect(() => {
     const onValueCallback = (snapshot) => {
       if (snapshot.exists()) {
-        const { text } = snapshot.val() || "";
-        textInputFieldRef.current.value = text;
+        const snapShotData = snapshot.val();
+        textInputFieldRef.current.value = snapShotData?.text || "";
+
+        console.log("onValueCallback", snapShotData);
+
+        // update image, if found
+        if (
+          snapShotData &&
+          snapShotData?.images &&
+          Array.isArray(snapShotData?.images) &&
+          snapShotData?.images?.length > 0
+        ) {
+          const latestImage = snapShotData.images.reduce((latest, current) =>
+            new Date(current.lastUpdated) > new Date(latest.lastUpdated)
+              ? current
+              : latest
+          );
+
+          setImages([latestImage]);
+        }
+
+        // update firebase data to keep track of changes
+        setFirebaseData(snapShotData);
       }
     };
 
     onValue(roomRef, onValueCallback);
-  }, [code, database, roomRef]);
+  }, []);
 
   // Set up drag and drop event listeners
   useEffect(() => {
