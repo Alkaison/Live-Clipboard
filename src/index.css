@@ -20,10 +20,6 @@
   box-sizing: border-box;
 }
 
-html {
-  background-color: var(--primary-color);
-}
-
 body {
   background-color: var(--primary-color);
   transition: color .5s, background-color .5s;
