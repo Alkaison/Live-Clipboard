@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, update, onValue } from "firebase/database";
 import { userIdentifier } from "../scripts/userIdentifier";
+import { sanitizeString } from "../scripts/sanitizeString";
 import { TailSpin } from "react-loader-spinner";
 import SvgDelete from "./SvgDelete";
 import SvgDownload from "./SvgDownload";
@@ -36,12 +37,14 @@ function ClipField() {
 
   // update image value to firebase
   const addNewImagesValueInDatabase = (name, src, bytes, lastUpdated) => {
+    const encodedFileName = sanitizeString(name);
+
     const data = {
       text: textInputFieldRef.current.value,
       images: [
         ...(firebaseData.images || []),
         {
-          name: name,
+          name: encodedFileName,
           src: src,
           bytes: bytes,
           downloads: 0,
@@ -50,7 +53,7 @@ function ClipField() {
           lastUpdated: lastUpdated,
         },
       ],
-      users: firebaseData.users || [],
+      users: firebaseData?.users?.length ? firebaseData.users : [USER_UUID],
       lastUpdated: lastUpdated,
     };
 
@@ -219,9 +222,9 @@ function ClipField() {
     const link = document.createElement("a");
 
     // Function to trigger the download
-    const triggerDownload = (href) => {
+    const triggerDownload = (href, fileName) => {
       link.href = href;
-      link.download = name;
+      link.download = fileName;
       link.click();
     };
 
@@ -229,22 +232,21 @@ function ClipField() {
     const addAttachmentFlag = (url, name) => {
       const urlParts = url.split("/upload/");
 
-      // remove extension from file name
-      const fileName = name.split(".").slice(0, -1).join(".");
-
       if (urlParts.length === 2) {
-        return `${urlParts[0]}/upload/fl_attachment:${fileName}/${urlParts[1]}`;
+        return `${urlParts[0]}/upload/fl_attachment:${name}/${urlParts[1]}`;
       }
       return url;
     };
 
+    const encodedFileName = sanitizeString(name);
+
     if (src.startsWith("data:image/")) {
       // If src is base64 data, directly set the href to the base64 data
-      triggerDownload(src);
+      triggerDownload(src, encodedFileName);
     } else {
       // If src is an external URL, try to fetch the image
-      const downloadUrl = addAttachmentFlag(src, name);
-      triggerDownload(downloadUrl);
+      const downloadUrl = addAttachmentFlag(src, encodedFileName);
+      triggerDownload(downloadUrl, encodedFileName);
     }
 
     updateImagesInDatabase(src, "download");
