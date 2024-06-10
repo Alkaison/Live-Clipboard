@@ -3,9 +3,12 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, update, onValue } from "firebase/database";
+import { userIdentifier } from "../scripts/userIdentifier";
 import { TailSpin } from "react-loader-spinner";
 import SvgDelete from "./SvgDelete";
 import SvgDownload from "./SvgDownload";
+
+const USER_UUID = userIdentifier();
 
 function ClipField() {
   let timeoutId;
@@ -26,6 +29,7 @@ function ClipField() {
     update(roomRef, {
       text: value,
       images: firebaseData.images || [],
+      users: firebaseData.users || [],
       lastUpdated: now,
     }); // data store into firebase
   };
@@ -42,9 +46,11 @@ function ClipField() {
           bytes: bytes,
           downloads: 0,
           deleted: false,
+          user: USER_UUID,
           lastUpdated: lastUpdated,
         },
       ],
+      users: firebaseData.users || [],
       lastUpdated: lastUpdated,
     };
 
@@ -270,10 +276,17 @@ function ClipField() {
     const onValueCallback = (snapshot) => {
       if (snapshot.exists()) {
         const snapShotData = snapshot.val();
-        textInputFieldRef.current.value = snapShotData.text || "";
+        textInputFieldRef.current.value = snapShotData?.text || "";
+
+        let users = [...(snapShotData?.users || [])];
+
+        // add user uuid to users if not found
+        if (!users?.includes(USER_UUID)) {
+          users.push(USER_UUID);
+        }
 
         // update firebase data to keep track of changes
-        setFirebaseData(snapshot.val());
+        setFirebaseData({ ...snapshot.val(), users: users });
 
         // update image, if found
         if (

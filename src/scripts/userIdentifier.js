@@ -37,6 +37,8 @@ export function userIdentifier() {
       uuid = generateUUID();
       localStorage.setItem(storageKey, uuid);
       setCookie(storageKey, uuid, 365);
+    } else if (uuid) {
+      localStorage.setItem(storageKey, uuid);
     }
 
     return uuid;

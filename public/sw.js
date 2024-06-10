@@ -63,8 +63,8 @@ self.addEventListener("fetch", (event) => {
           });
           return response;
         })
-        .catch(function (reason) {
-          console.error("ServiceWorker fetch failed: ", reason);
+        .catch(function () {
+          console.error("ServiceWorker fetch failed.");
         });
       // prioritize cached response over network
       return cachedResponse || networkFetch;
