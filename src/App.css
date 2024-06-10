@@ -798,7 +798,6 @@
   .status {
     min-width: initial;
     display: flex;
-    width: 100%;
     padding: 0 16px;
     position: relative;
   }
@@ -1090,7 +1089,7 @@ label {
 #file-label {
   width: 100%;
   height: 100%;
-  padding: 25% 0 0;
+  padding: 40% 0 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1101,6 +1100,7 @@ label {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 300;
 }
 
 .imageDrop-active {
@@ -1125,10 +1125,11 @@ label {
 #image-display {
   width: 100%;
   margin: 56px 0 0 0;
+  z-index: 150;
 }
 
 #image-display>div {
-  margin: 0 8px;
+  margin: 0 8px 8px;
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
   border-radius: 12px;
@@ -1139,7 +1140,7 @@ label {
   height: auto;
   max-height: 300px;
   border-radius: 12px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 #image-display>div>figcaption {
@@ -1225,7 +1226,8 @@ label {
   font-size: 14px;
   font-weight: normal;
   letter-spacing: .7px;
-  line-height: 26px;
+  line-height: 24px;
+  z-index: 10;
 }
 
 .message-text-information-img-upload>span {
@@ -1357,5 +1359,65 @@ label {
   to {
     transform: translate(0%, 0%);
     opacity: 1;
+  }
+}
+
+/* Clipboard Navbar Responsive */
+@media screen and (max-width: 380px) {
+  .status .cp-code span img {
+    display: none;
+  }
+
+  .status {
+    padding: 0 8px;
+  }
+}
+
+/* Clipboard Image Feature - Responsive */
+@media screen and (max-width: 768px) {
+  .Clipboard-container {
+    flex-direction: column;
+  }
+
+  #input-box,
+  .input {
+    width: 100%;
+  }
+
+  .message-text-information-img-upload {
+    display: none;
+  }
+
+  #image-display {
+    margin: 0;
+  }
+
+  #input-box {
+    height: calc(100vh - 495px);
+    min-height: 300px;
+  }
+
+  .file-container {
+    width: 100%;
+    height: 360px;
+    min-height: 360px;
+  }
+
+  #image-display>div {
+    margin: 8px;
+  }
+
+  .uploaded-image-container {
+    max-height: 250px;
+  }
+
+  #image-display>div>div>img {
+    max-height: 250px;
+  }
+
+  #error {
+    top: 14px;
+    right: 12px;
+    bottom: initial;
   }
 }

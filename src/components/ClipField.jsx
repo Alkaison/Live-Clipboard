@@ -364,7 +364,7 @@ function ClipField() {
         <textarea
           name="textarea"
           id="input-box"
-          placeholder="Type here"
+          placeholder="Type or paste your text here"
           autoFocus
           ref={textInputFieldRef}
           onChange={handleValueChange}
