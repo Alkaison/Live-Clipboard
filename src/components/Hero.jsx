@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { clickLogging, clipboardLogging } from "../scripts/analyticsLogging";
 
 function Hero() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ function Hero() {
     }
 
     setJoiningCode("");
+    clipboardLogging(createdCode, true);
     navigate(`/${createdCode}`);
   };
 
@@ -36,6 +38,7 @@ function Hero() {
 
     if (validCode) {
       setCodeError(false);
+      clipboardLogging(joiningCode, false);
       navigate(`/${joiningCode}`);
     } else {
       setCodeError(true);
@@ -100,7 +103,13 @@ function Hero() {
         </div>
       </div>
 
-      <div className="showStar-container" onClick={() => navigate("/feedback")}>
+      <div
+        className="showStar-container"
+        onClick={() => {
+          clickLogging("Rating");
+          navigate("/feedback");
+        }}
+      >
         <h3>
           Rated: 4.8 / 5{" "}
           <span

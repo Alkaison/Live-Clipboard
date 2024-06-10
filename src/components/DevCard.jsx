@@ -1,4 +1,5 @@
 import React from "react";
+import { clickLogging } from "../scripts/analyticsLogging";
 
 function DevCard({ name, link, commits }) {
   return (
@@ -7,7 +8,13 @@ function DevCard({ name, link, commits }) {
       <p>{name}</p>
       <p>Contributions Tier: {commits}</p>
 
-      <button type="button" onClick={() => window.open(link)}>
+      <button
+        type="button"
+        onClick={() => {
+          clickLogging("Developer Card Connect: " + name);
+          window.open(link);
+        }}
+      >
         <svg
           width="800px"
           height="800px"

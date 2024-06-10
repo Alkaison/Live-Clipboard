@@ -4,7 +4,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
@@ -12,10 +11,17 @@ module.exports = {
   settings: { react: { version: "18.2" } },
   plugins: ["react-refresh"],
   rules: {
-    "react/jsx-no-target-blank": "off",
+    // Disable specified rules
+    "no-useless-catch": "off",
+    "react/prop-types": "off",
+    "react/jsx-runtime": "off",
+
+    // Set all rules to warnings
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
     ],
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn",
   },
 };

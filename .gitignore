@@ -5,6 +5,8 @@
 
 # testing
 /coverage
+/validator/passed
+/validator/failed
 
 # production
 /build

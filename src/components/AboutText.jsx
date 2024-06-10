@@ -10,7 +10,7 @@ function AboutText() {
       <p className="about-us-description">
         Realtime Clipboard is your ultimate web app for instantaneous text and
         code sharing. Break free from the constraints of traditional sharing
-        methods and experience real-time collaboration, whether you're a
+        methods and experience real-time collaboration, whether you&apos;re a
         developer, content creator, or part of a team. With our user-friendly
         interface, you can copy, paste, and edit content, seeing changes as they
         happen, making collaboration effortless. Unlock your full potential with

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
@@ -158,7 +159,7 @@ function ClipField() {
           response.created_at
         );
       })
-      .catch((error) => {
+      .catch(() => {
         setImages([]);
         errorRef.textContent = "Image Could Not be Uploaded.";
         setLoader(false);

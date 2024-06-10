@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getAnalytics } from "firebase/analytics";
 
 // app settings
 const firebaseConfig = {
@@ -10,8 +11,12 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_APP_MESSAGINGSENDERID,
   appId: import.meta.env.VITE_APP_APPID,
   databaseURL: import.meta.env.VITE_APP_DATABASEURL,
+  measurementId: import.meta.env.VITE_APP_MEASUREMENT_ID,
 };
 
 // DB app initialization
 const app = initializeApp(firebaseConfig);
-export const appDatabase = getDatabase(app);
+const appDatabase = getDatabase(app);
+const appAnalytics = getAnalytics(app);
+
+export { appAnalytics, appDatabase };

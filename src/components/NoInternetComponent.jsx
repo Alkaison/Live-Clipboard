@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { pageLogging } from "../scripts/analyticsLogging";
 
 function NoInternetComponent() {
+  useEffect(() => {
+    pageLogging("No Internet");
+  }, []);
+
   return (
     <div className="offline-app-container">
       <h2>
