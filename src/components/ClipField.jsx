@@ -145,14 +145,17 @@ function ClipField() {
     payload.append("public_id", `${code}_${firebaseData?.images?.length || 0}`);
     payload.append(
       "upload_preset",
-      import.meta.env.VITE_CLOUDINARY_CLOUD_UPLOAD_PRESET_NAME
+      import.meta.env.VITE_APP_CLOUDINARY_CLOUD_UPLOAD_PRESET_NAME
     );
-    payload.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
+    payload.append(
+      "cloud_name",
+      import.meta.env.VITE_APP_CLOUDINARY_CLOUD_NAME
+    );
 
     // API Request
     fetch(
       `https://api.cloudinary.com/v1_1/${
-        import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+        import.meta.env.VITE_APP_CLOUDINARY_CLOUD_NAME
       }/image/upload`,
       {
         method: "post",
