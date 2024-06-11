@@ -1,4 +1,4 @@
-const cacheDataName = "realtime-clipboard-cache-v5";
+const cacheDataName = "realtime-clipboard-cache-v1-2-1";
 
 const staticAssets = [
   "/assets/index.js",

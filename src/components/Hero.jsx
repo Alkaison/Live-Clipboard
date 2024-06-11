@@ -120,7 +120,7 @@ function Hero() {
           >
             &#9733;
           </span>{" "}
-          (200+ Reviews)
+          (75+ Reviews)
         </h3>
       </div>
     </div>
