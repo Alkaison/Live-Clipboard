@@ -5,11 +5,7 @@ import swDev from "./swDev";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("realtime-clipboard"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App />);
 
 // serviceWorker Register
 swDev();

@@ -6,6 +6,7 @@
   --secondary-color: #1d3557;
   --font-color: #ffffff;
 }
+
 /* Light theme */
 .light-theme {
   --primary-color: #DCEFFA;
@@ -18,7 +19,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: var(--primary-color);
   transition: color .5s, background-color .5s;
+}
+
+img {
+  pointer-events: none;
 }

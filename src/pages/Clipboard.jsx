@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ClipNavbar from "../components/ClipNavbar";
 import ClipField from "../components/ClipField";
 import NoInternetComponent from "../components/NoInternetComponent";
+import { pageLogging } from "../scripts/analyticsLogging";
 
 function Clipboard() {
   const [internetStatus, setInternetStatus] = useState(navigator.onLine);
@@ -14,6 +15,8 @@ function Clipboard() {
     // Add event listeners to check online/offline status
     window.addEventListener("online", updateInternetStatus);
     window.addEventListener("offline", updateInternetStatus);
+
+    pageLogging("Clipboard");
 
     // Cleanup event listeners on component unmount
     return () => {

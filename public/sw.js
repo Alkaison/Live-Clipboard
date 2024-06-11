@@ -1,9 +1,8 @@
-const cacheDataName = "realtime-clipboard-cache-v4";
+const cacheDataName = "realtime-clipboard-cache-v1-2-1";
 
 const staticAssets = [
-  // "/static/js/main.272abdc0.js",
-  // "/static/css/main.72ee3a12.css",
-  "/static/js/bundle.js",
+  "/assets/index.js",
+  "/assets/index.css",
   "/assets/clipboard-logo.webp",
   "/assets/clipboard.webp",
   "/assets/no-internet.webp",
@@ -12,6 +11,7 @@ const staticAssets = [
   "/assets/network.webp",
   "/assets/moon.webp",
   "/assets/sun.webp",
+  "/assets/upload.png",
   "/assets/copy.svg",
   "/assets/release-icon.svg",
   "/assets/major-update-icon.svg",
@@ -63,8 +63,8 @@ self.addEventListener("fetch", (event) => {
           });
           return response;
         })
-        .catch(function (reason) {
-          console.error("ServiceWorker fetch failed: ", reason);
+        .catch(function () {
+          console.error("ServiceWorker fetch failed.");
         });
       // prioritize cached response over network
       return cachedResponse || networkFetch;
