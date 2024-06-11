@@ -142,7 +142,7 @@ function ClipField() {
 
     // Payload creation
     payload.append("file", src);
-    payload.append("public_id", `${code}_${firebaseData?.images?.length || 0}`);
+    payload.append("public_id", `${code}_${firebaseData?.images?.length ?? 0}`);
     payload.append(
       "upload_preset",
       import.meta.env.VITE_APP_CLOUDINARY_CLOUD_UPLOAD_PRESET_NAME
@@ -281,9 +281,9 @@ function ClipField() {
     const onValueCallback = (snapshot) => {
       if (snapshot.exists()) {
         const snapShotData = snapshot.val();
-        textInputFieldRef.current.value = snapShotData?.text || "";
+        textInputFieldRef.current.value = snapShotData?.text ?? "";
 
-        let users = [...(snapShotData?.users || [])];
+        let users = [...(snapShotData?.users ?? [])];
 
         // add user uuid to users if not found
         if (!users?.includes(USER_UUID)) {
