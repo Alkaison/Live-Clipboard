@@ -13,17 +13,17 @@ function ReleaseNotes() {
             alt="Release v1.2.0"
             title="Major Release"
           />{" "}
-          Feature Update: v1.2.0
+          Feature Update: v1.2.1
         </h3>
         <p>
-          <strong>Release Date</strong>: 22 May, 2024
+          <strong>Release Date</strong>: 12 Jun, 2024
         </p>
         <ul>
           <li>Feat: Realtime images sharing feature.</li>
           <li>Feat: New UI for the Clipboard page.</li>
           <li>Feat: download the shared images instantly. </li>
-          <li>Feat: Share text and images in real-time.</li>
-          <li>Fix: minor bugs.</li>
+          <li>Feat: Updated application security.</li>
+          <li>Docs: Updated about page.</li>
         </ul>
       </div>
 
