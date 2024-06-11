@@ -236,8 +236,11 @@ function ClipField() {
       const urlParts = url.split("/upload/");
 
       if (urlParts.length === 2) {
-        return `${urlParts[0]}/upload/fl_attachment:${name}/${urlParts[1]}`;
+        let formattedURL = `${urlParts[0]}/upload/fl_attachment:${name}/${urlParts[1]}`;
+        const secureUrl = formattedURL.replace(/^http:/, "https:");
+        return secureUrl;
       }
+
       return url;
     };
 
