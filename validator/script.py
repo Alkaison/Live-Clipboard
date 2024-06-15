@@ -38,7 +38,7 @@ def validate_sub_nodes_of_the_json_file(file_name):
         for key in data.keys():
             value = data[key]
             if isinstance(value, dict):
-                allowed_keys = {"text", "lastUpdated", "images"}
+                allowed_keys = {"text", "lastUpdated", "images", "users"}
                 valid_keys = set(value.keys()) == allowed_keys
                 if not valid_keys:
                     unexpected_keys = set(value.keys()) - allowed_keys
