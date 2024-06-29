@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { clickLogging } from "../scripts/analyticsLogging";
 
 export default function FeedbackForm() {
   const form = useRef();
@@ -19,11 +20,12 @@ export default function FeedbackForm() {
 
     if (rating) {
       setLoader(true);
+      clickLogging("User Feedback Submitted");
 
       const secret = {
-        service: process.env.REACT_APP_EMAILJSSERVICE_KEY,
-        template: process.env.REACT_APP_EMAILJSTEMPLATE_KEY,
-        key: process.env.REACT_APP_EMAILJSAPIKEY,
+        service: import.meta.env.VITE_APP_EMAILJSSERVICE_KEY,
+        template: import.meta.env.VITE_APP_EMAILJSTEMPLATE_KEY,
+        key: import.meta.env.VITE_APP_EMAILJSAPIKEY,
       };
 
       if (!requestActive.current) {
@@ -33,22 +35,20 @@ export default function FeedbackForm() {
           .sendForm(secret.service, secret.template, form.current, {
             publicKey: secret.key,
           })
-          .then(
-            () => {
-              setFormSubmitMessage("Thank You! Your feedback is sent 🚀");
-              form.current.reset();
-              setRating(0);
-              setLoader(false);
-              requestActive.current = false;
-            },
-            (error) => {
-              setFormSubmitMessage(
-                "Oops! Couldn't sent your feedback. Please try again."
-              );
-              requestActive.current = false;
-              setLoader(false);
-            }
-          );
+          .then(() => {
+            setFormSubmitMessage("Thank You! Your feedback is sent 🚀");
+            form.current.reset();
+            setRating(0);
+            setLoader(false);
+            requestActive.current = false;
+          })
+          .catch(() => {
+            setFormSubmitMessage(
+              "Oops! Couldn't sent your feedback. Please try again."
+            );
+            requestActive.current = false;
+            setLoader(false);
+          });
       }
     } else {
       setFormSubmitMessage("Please give us rating before senting.");
@@ -59,7 +59,7 @@ export default function FeedbackForm() {
     <div className="feedback-container">
       <form ref={form} onSubmit={sendEmail}>
         <h1 className="feedback-h1">User Feedback</h1>
-        <p>Let us know how's your experience with our platform</p>
+        <p>Let us know how&apos;s your experience with our platform</p>
 
         <div className="feedback-form">
           <input

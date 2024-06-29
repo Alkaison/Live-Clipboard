@@ -8,13 +8,12 @@ function AboutText() {
       <h1 className="about-us-title">What is Realtime Clipboard?</h1>
       <hr />
       <p className="about-us-description">
-        Realtime Clipboard is your ultimate web app for instantaneous text and
-        code sharing. Break free from the constraints of traditional sharing
-        methods and experience real-time collaboration, whether you're a
-        developer, content creator, or part of a team. With our user-friendly
-        interface, you can copy, paste, and edit content, seeing changes as they
-        happen, making collaboration effortless. Unlock your full potential with
-        Realtime Clipboard.
+        Realtime Clipboard is a powerful and easy-to-use web app that lets you
+        share text and images instantly. Whether you’re a developer, content
+        creator, or part of a team, our platform allows you to copy, paste, and
+        edit content in real-time. See updates as they happen, making
+        collaboration smooth and immediate. Enjoy fast and efficient sharing
+        with Realtime Clipboard.
       </p>
 
       <br />
@@ -22,11 +21,12 @@ function AboutText() {
       <h2>Who made Realtime Clipboard?</h2>
       <hr />
       <p>
-        Realtime Clipboard is a thriving open-source project driven by a global
-        community of passionate developers, all working together to enhance
-        real-time text and code sharing. Join us as we redefine online
-        collaboration and make sharing and editing content easier and more
-        efficient for everyone.
+        Realtime Clipboard is primarily built by two dedicated developers, with
+        valuable contributions from other talented developers who improved
+        various parts of the project through open-source efforts. Together, they
+        have created a seamless platform for real-time text and image sharing,
+        making collaboration fast and efficient. Meet our core team and
+        contributors below.
       </p>
       <br />
 

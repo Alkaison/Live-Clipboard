@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, onDisconnect, onValue } from "firebase/database";
+import { clickLogging } from "../scripts/analyticsLogging";
 
 function ClipNavbar({ internetStatus }) {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ function ClipNavbar({ internetStatus }) {
 
   // copy the room's URL into user's clipboard
   const handleCopyCode = () => {
+    clickLogging("Room URL Copied: " + code);
     navigator.clipboard.writeText(`https://live-clipboard.netlify.app/${code}`);
   };
 
