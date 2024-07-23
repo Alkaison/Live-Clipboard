@@ -4,6 +4,8 @@
  * an error message.
  */
 export default function swDev() {
+  if (window.location.hostname === "localhost") return;
+
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("/sw.js")
