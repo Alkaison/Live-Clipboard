@@ -1,6 +1,7 @@
 import json, os, datetime
 
 # Script to validate the JSON File for the Realtime Clipboard Data
+roomCodesCount, imagesUploadedCount, usersCount = 0, 0, 0
 
 """ Find all json files in the current root directory """
 def find_json_files(root_dir):
@@ -13,6 +14,8 @@ def find_json_files(root_dir):
 
 """ Function to Validate the Root Nodes (Room ID's) from the JSON File """
 def validate_root_nodes_of_the_json_file(file_name):
+    global roomCodesCount
+
     try:
         with open(file_name, encoding='utf-8') as file:
             data = json.load(file)
@@ -21,6 +24,7 @@ def validate_root_nodes_of_the_json_file(file_name):
             data = json.load(file, encoding='latin1')
     if isinstance(data, dict):
         for key in data.keys():
+            roomCodesCount += 1
             if len(key) < 5 or len(key) > 5:
                 print(f"""\nError: Invalid key length "{key}"" at file "{file_name}". """)
                 return False
@@ -28,6 +32,8 @@ def validate_root_nodes_of_the_json_file(file_name):
 
 """" Function to validate the Sub Nodes (Room's Data) from the JSON File """
 def validate_sub_nodes_of_the_json_file(file_name):
+    global usersCount, imagesUploadedCount
+
     try:
         with open(file_name, encoding='utf-8') as file:
             data = json.load(file)
@@ -40,6 +46,8 @@ def validate_sub_nodes_of_the_json_file(file_name):
             if isinstance(value, dict):
                 allowed_keys = {"text", "lastUpdated", "images", "users"}
                 valid_keys = set(value.keys()) == allowed_keys
+                usersCount += len(value.get("users", []))
+                imagesUploadedCount += len(value.get("images", []))
                 if not valid_keys:
                     unexpected_keys = set(value.keys()) - allowed_keys
                     if len(unexpected_keys) > 0:
@@ -94,6 +102,12 @@ if __name__ == '__main__':
     if root_data and sub_root_data:
         print("\n----------------------------------------")
         print("JSON File Validation Result: SUCCESS")
+        print("----------------------------------------")
+        print("Room Codes Count: ", roomCodesCount)
+        print("----------------------------------------")
+        print("Users Count: ", usersCount)
+        print("----------------------------------------")
+        print("Images Uploaded Count: ", imagesUploadedCount)
         print("----------------------------------------")
 
         # Updated directory for passed files
