@@ -80,7 +80,10 @@ function Navbar() {
             className="theme"
             src={isDark ? "assets/moon.webp" : "assets/sun.webp"}
             alt={isDark ? "Dark Theme" : "Light Theme"}
-            onClick={toggleTheme}
+            onClick={() => {
+              if (!document.startViewTransition) toggleTheme();
+              document.startViewTransition(toggleTheme);
+            }}
           />
         </li>
         <li role="menuitem">
