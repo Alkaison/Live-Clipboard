@@ -48,6 +48,8 @@ self.addEventListener("activate", (event) => {
       );
     })
   );
+
+  self.clients.claim();
 });
 
 // Prioritize network for fetches with a fallback to cache
@@ -70,4 +72,9 @@ self.addEventListener("fetch", (event) => {
       return cachedResponse || networkFetch;
     })
   );
+});
+
+// Listen for the `controllerchange` event to reload the page
+self.addEventListener("controllerchange", () => {
+  window.location.reload();
 });
