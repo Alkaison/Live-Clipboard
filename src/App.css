@@ -276,6 +276,20 @@
   background-color: rgba(66, 165, 245, .8);
 }
 
+/* Release Logs Show More */
+.show-more-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-1.show-more-button {
+  width: 180px;
+  height: 40px;
+  font-size: 16px;
+  letter-spacing: .7px;
+}
+
 /* Rating Stars Container At Home Page */
 .showStar-container {
   margin-top: 50px;
