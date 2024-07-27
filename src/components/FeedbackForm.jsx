@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import ReactStars from "react-stars";
 import { clickLogging } from "../scripts/analyticsLogging";
+import { userIdentifier } from "../scripts/userIdentifier";
+
+const USER_UUID = userIdentifier();
 
 export default function FeedbackForm() {
   const form = useRef();
@@ -12,6 +15,39 @@ export default function FeedbackForm() {
 
   const handleRatingChange = (newRating) => {
     setRating(newRating);
+  };
+
+  // handle form submission to sheet
+  const submitFeedbackFormToSheet = async () => {
+    // Retrieve additional form data
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const currentTime = new Date().toISOString(); // Current date and time in ISO format
+    const formSubmissionTime = new Date().toISOString(); // Time when the form is submitted
+    const userAgent = navigator?.userAgent || "NA";
+    const language = navigator?.language || navigator?.userLanguage || "NA";
+
+    const data = new FormData();
+    data.append("firstName", form.current.firstName.value);
+    data.append("lastName", form.current.lastName.value);
+    data.append("email", form.current.email.value);
+    data.append("message", form.current.message.value);
+    data.append("rating", rating);
+    data.append("timezone", timezone);
+    data.append("currentTime", currentTime);
+    data.append("formSubmissionTime", formSubmissionTime);
+    data.append("userId", USER_UUID);
+    data.append("userAgent", userAgent);
+    data.append("language", language);
+
+    try {
+      await fetch(import.meta.env.VITE_APP_SHEET_URL, {
+        method: "POST",
+        body: data,
+        muteHttpExceptions: true,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // feedBack Email sending code
@@ -32,6 +68,10 @@ export default function FeedbackForm() {
       if (!requestActive.current) {
         requestActive.current = true;
 
+        // Sheet Submission
+        submitFeedbackFormToSheet();
+
+        // Email Submission
         emailjs
           .sendForm(secret.service, secret.template, form.current, {
             publicKey: secret.key,
@@ -67,6 +107,7 @@ export default function FeedbackForm() {
             className="form-input"
             type="text"
             name="user_Firstname"
+            id="firstName"
             placeholder="First Name"
             onChange={() => setFormSubmitMessage("")}
             required
@@ -75,6 +116,7 @@ export default function FeedbackForm() {
             className="form-input"
             type="text"
             name="user_Lastname"
+            id="lastName"
             placeholder="Last Name"
             required
           />
@@ -92,6 +134,7 @@ export default function FeedbackForm() {
           name="message"
           rows="5"
           cols="50"
+          id="message"
           placeholder="Your Message"
           required
         ></textarea>
@@ -99,6 +142,7 @@ export default function FeedbackForm() {
         <input
           type="number"
           name="rating_star"
+          id="rating"
           value={rating}
           onChange={() => {}} // operation is handled below
           style={{ display: "none" }}
