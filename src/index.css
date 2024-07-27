@@ -28,3 +28,24 @@ body {
 img {
   pointer-events: none;
 }
+
+/* Custom Scrollbar Style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #003049;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0c1f3a;
+  border-radius: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+}

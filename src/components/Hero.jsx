@@ -51,7 +51,7 @@ function Hero() {
 
       <h1 className="app-name">Realtime Clipboard</h1>
       <h2 className="tag-line">
-        Join with unique key and share text with your friends!
+        Instantly join room with unique key, share text and images in real time!
       </h2>
 
       <div className="room-joining-container">
@@ -91,6 +91,7 @@ function Hero() {
             id="joinRoom"
             minLength="5"
             maxLength="5"
+            autoFocus={true}
             value={joiningCode}
             onChange={(e) => updateJoiningCode(e.target.value)}
             onKeyDown={(e) => {
