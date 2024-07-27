@@ -98,6 +98,10 @@ export default function FeedbackForm() {
 
   return (
     <div className="feedback-container">
+      <div className="feedback-img-container">
+        <img src="./assets/feedbackAvatar.png" alt="Feedback Form Avatar" />
+      </div>
+
       <form ref={form} onSubmit={sendEmail}>
         <h1 className="feedback-h1">User Feedback</h1>
         <p>Let us know how&apos;s your experience with our platform</p>
