@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import ReactStars from "react-stars";
 import { clickLogging } from "../scripts/analyticsLogging";
 
 export default function FeedbackForm() {
   const form = useRef();
   const requestActive = useRef(null);
   const [loader, setLoader] = useState(false);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(5);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
 
   const handleRatingChange = (newRating) => {
@@ -106,20 +107,13 @@ export default function FeedbackForm() {
         <div className="rating-star">
           <label className="rate-exp">Rate Experience:</label>
 
-          <div>
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                onClick={() => handleRatingChange(star)}
-                style={{
-                  cursor: "pointer",
-                  color: star <= rating ? "gold" : "gray",
-                }}
-              >
-                &#9733;
-              </span>
-            ))}
-          </div>
+          <ReactStars
+            count={5}
+            onChange={handleRatingChange}
+            size={40}
+            value={rating}
+            color2={"#ffd700"}
+          />
         </div>
 
         <button

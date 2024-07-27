@@ -18,7 +18,8 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-loader-spinner": "^6.1.6",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "react-stars": "^2.2.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
