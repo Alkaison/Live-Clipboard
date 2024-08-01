@@ -79,6 +79,17 @@ export default function FeedbackForm() {
           .then(() => {
             setFormSubmitMessage("Thank You! Your feedback is sent 🚀");
             form.current.reset();
+
+            // update the data to stop showing toast messages
+            const getData = JSON.parse(localStorage.getItem("feedback")) || {};
+            localStorage.setItem(
+              "feedback",
+              JSON.stringify({
+                ...getData,
+                hasSubmittedFeedbackResponse: true,
+              })
+            );
+
             setRating(0);
             setLoader(false);
             requestActive.current = false;

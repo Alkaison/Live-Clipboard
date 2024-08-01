@@ -6,6 +6,18 @@ import { Helmet } from "react-helmet";
 
 export default function Feedback() {
   useEffect(() => {
+    const today = new Date();
+    const getData = JSON.parse(localStorage.getItem("feedback")) || {};
+
+    localStorage.setItem(
+      "feedback",
+      JSON.stringify({
+        ...getData,
+        lastShown: today,
+        hasOpenedFeedbackPageToday: true,
+      })
+    );
+
     pageLogging("Feedback");
   }, []);
 

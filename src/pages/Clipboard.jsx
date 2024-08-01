@@ -4,9 +4,67 @@ import ClipField from "../components/ClipField";
 import NoInternetComponent from "../components/NoInternetComponent";
 import { pageLogging } from "../scripts/analyticsLogging";
 import { Helmet } from "react-helmet";
+import { Toaster, toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 function Clipboard() {
+  const navigate = useNavigate();
   const [internetStatus, setInternetStatus] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const getData = JSON.parse(localStorage.getItem("feedback")) || {};
+
+    const checkToastShown = () => {
+      if (getData?.hasSubmittedFeedbackResponse) {
+        return true;
+      }
+
+      const today = new Date();
+      const lastShown = new Date(getData?.lastShown || new Date());
+
+      // extract only the date, not the time
+      const todayDate = today.toDateString();
+      const lastShownDate = lastShown.toDateString();
+
+      if (todayDate !== lastShownDate) {
+        localStorage.setItem(
+          "feedback",
+          JSON.stringify({
+            lastShown: today,
+            hasOpenedFeedbackPageToday: false,
+          })
+        );
+        return false;
+      }
+
+      if (!getData?.hasOpenedFeedbackPageToday) {
+        return false;
+      }
+
+      return true;
+    };
+
+    if (!checkToastShown()) {
+      toast("We'd Love Your Feedback! 💛", {
+        description:
+          "Please let us know how you like our product and what we can improve. Thank you!",
+        action: {
+          label: "Share Feedback",
+          onClick: () => navigate("/feedback"),
+        },
+        actionButtonStyle: {
+          backgroundColor: "#002F48",
+          fontFamily: "Rubik, sans-serif",
+          color: "white",
+          fontSize: "12px",
+          letterSpacing: ".7px",
+        },
+        duration: Infinity,
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const updateInternetStatus = () => {
@@ -73,6 +131,7 @@ function Clipboard() {
         </title>
       </Helmet>
 
+      <Toaster richColors={true} />
       <ClipNavbar internetStatus={internetStatus} />
       {internetStatus ? <ClipField /> : <NoInternetComponent />}
     </>
