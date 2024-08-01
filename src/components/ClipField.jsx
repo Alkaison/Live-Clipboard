@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, update, onValue } from "firebase/database";
@@ -130,11 +130,8 @@ function ClipField() {
   };
 
   // check if the image at display is same as the new image
-  const imageExists = useCallback(
-    (name, src) =>
-      images.some((image) => image.name === name && image.src === src),
-    [images]
-  );
+  const imageExists = (name, src) =>
+    images.find((image) => image.name === name && image.src === src);
 
   // upload the image to the cloud
   const uploadImageOnCloudinary = async (src, name) => {
@@ -179,45 +176,87 @@ function ClipField() {
   };
 
   // handle file uploading on client side
-  const fileHandler = useCallback(
-    (file, name, type) => {
-      const error = errorRef.current;
+  const fileHandler = (file, name, type) => {
+    const error = errorRef.current;
 
-      if (images.length === 1) {
-        error.textContent =
-          "Only one image can be uploaded at a time. Read the note below.";
-        return false;
+    if (images.length === 1) {
+      error.textContent =
+        "Only one image can be uploaded at a time. Read the note below.";
+      return false;
+    }
+
+    if (type.split("/")[0] !== "image") {
+      error.textContent = "Please upload an image.";
+      return false;
+    }
+
+    error.textContent = "";
+    setLoader(true);
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const src = reader.result;
+
+      if (!imageExists(name, src)) {
+        setImages(() => [{ src: src, name: name }]);
+        uploadImageOnCloudinary(src, name);
+      } else {
+        error.textContent = "Image already exists";
+        setLoader(false);
       }
-
-      if (type.split("/")[0] !== "image") {
-        error.textContent = "Please upload an image.";
-        return false;
-      }
-
-      error.textContent = "";
-      setLoader(true);
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        const src = reader.result;
-
-        if (!imageExists(name, src)) {
-          setImages(() => [{ src: src, name: name }]);
-          uploadImageOnCloudinary(src, name);
-        } else {
-          error.textContent = "Image already exists";
-          setLoader(false);
-        }
-      };
-    },
-    [imageExists]
-  );
+    };
+  };
 
   // delete the image
   const handleDeleteImage = (imageSrc) => {
     setImages([]);
     updateImagesInDatabase(imageSrc, "delete");
+  };
+
+  // handle image paste event on client side
+  const handlePaste = (event) => {
+    const clipboardData = event.clipboardData || window.clipboardData;
+    const items = clipboardData.items;
+    const error = errorRef.current;
+
+    if (images.length === 1) {
+      error.textContent =
+        "Only one image can be uploaded at a time. Read the note below.";
+      return false;
+    }
+
+    for (let item of items) {
+      if (item?.type?.split("/")[0] !== "image") {
+        error.textContent = "Please upload an image.";
+        return false;
+      }
+
+      if (item.type.indexOf("image") !== -1) {
+        error.textContent = "";
+        setLoader(true);
+
+        const file = item.getAsFile();
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const src = reader.result;
+          console.log("Event: ", event);
+          console.log("Reader: ", reader);
+
+          if (!imageExists("clipboard-pasted-image", src)) {
+            setImages(() => [{ src: src, name: "clipboard-pasted-image" }]);
+            uploadImageOnCloudinary(src, "clipboard-pasted-image");
+          } else {
+            error.textContent = "Image already exists";
+            setLoader(false);
+          }
+        };
+
+        reader.readAsDataURL(file);
+        break;
+      }
+    }
   };
 
   // handle image downloading on client side for base64 data or external URL
@@ -385,10 +424,11 @@ function ClipField() {
         <textarea
           name="textarea"
           id="input-box"
-          placeholder="Type or paste your text here"
+          placeholder="Type your text or paste images using Ctrl + V."
           autoFocus
           ref={textInputFieldRef}
           onChange={handleValueChange}
+          onPaste={handlePaste}
         ></textarea>
       </div>
 
