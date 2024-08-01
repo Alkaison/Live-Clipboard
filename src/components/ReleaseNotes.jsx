@@ -19,10 +19,11 @@ function ReleaseNotes() {
       {releaseLogsData.length > showReleaseLogsLimit && (
         <div className="show-more-button-container">
           <button
+            type="button"
             className="btn-1 show-more-button"
             onClick={() => setShowReleaseLogsLimit(showReleaseLogsLimit + 2)}
           >
-            Show More
+            Show More <img src="./assets/right-arrow.svg" alt="Arrow Icon" />
           </button>
         </div>
       )}

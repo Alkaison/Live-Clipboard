@@ -286,8 +286,24 @@
 .btn-1.show-more-button {
   width: 180px;
   height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   font-size: 16px;
   letter-spacing: .7px;
+}
+
+.btn-1.show-more-button:hover>img {
+  transform: translateX(4px);
+}
+
+.btn-1.show-more-button>img {
+  width: 28px;
+  height: 28px;
+  margin: 1px 0 0 0;
+  padding: 2px 0;
+  transition: transform .3s ease-in-out;
 }
 
 /* Rating Stars Container At Home Page */
