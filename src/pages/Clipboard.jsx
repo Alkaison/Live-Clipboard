@@ -49,7 +49,7 @@ function Clipboard() {
         description:
           "Please let us know how you like our product and what we can improve. Thank you!",
         action: {
-          label: "Share Feedback",
+          label: "Give Feedback",
           onClick: () => navigate("/feedback"),
         },
         actionButtonStyle: {
