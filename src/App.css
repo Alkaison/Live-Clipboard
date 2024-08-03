@@ -478,13 +478,13 @@
   letter-spacing: .7px;
 }
 
-.dev-card-container {
+/* .dev-card-container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
   gap: 32px;
-}
+} */
 
 .dev-card {
   width: 300px;
