@@ -433,11 +433,15 @@ function ClipField() {
         ></textarea>
       </div>
 
-      <div className="file-container" ref={fileContainerRef}>
+      <div
+        className="file-container"
+        ref={fileContainerRef}
+        onClick={() => uploadBtnRef.current.click()}
+      >
         <p className="feature-label-text">New Feature</p>
 
         {images.length === 0 && (
-          <>
+          <div className="image-upload-container">
             <input
               type="file"
               name="file-input"
@@ -454,13 +458,9 @@ function ClipField() {
               alt="Upload Assets"
             />
 
-            <label id="file-label" htmlFor="upload-btn">
-              Select or drop the image here
-            </label>
-          </>
+            <p>Select, paste or drop the image here.</p>
+          </div>
         )}
-
-        <div id="error" ref={errorRef}></div>
 
         {/* Uploaded Images Container */}
         {images.length === 1 && (
@@ -515,6 +515,8 @@ function ClipField() {
             ))}
           </div>
         )}
+
+        <div id="error" ref={errorRef}></div>
 
         {/* Message for Information */}
         <div className="message-text-information-img-upload">

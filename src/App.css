@@ -1149,14 +1149,32 @@ label {
   display: none;
 }
 
-#upload-img {
+.image-upload-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.image-upload-container>img {
   width: 150px;
   height: 150px;
   aspect-ratio: 1/1;
-  position: absolute;
-  top: 40%;
-  transform: translateY(-40%);
   filter: invert(1) drop-shadow(2px 4px 6px #003049);
+}
+
+.image-upload-container>p {
+  color: var(--font-color);
+  text-align: center;
+  text-wrap: balance;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .7px;
+  line-height: 24px;
 }
 
 .feature-label-text {
