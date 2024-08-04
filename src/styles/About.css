@@ -10,14 +10,14 @@
 }
 
 /* Dev Card */
-.dev-card-container {
+/* .dev-card-container {
     width: 450px;
     height: 700px;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
+} */
 
 .dev-card-bg {
     width: 100%;

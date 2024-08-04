@@ -1,5 +1,6 @@
 import React from "react";
-import DevCardNewUI from "./DevCardNewUI";
+import DevCard from "./DevCard";
+import { developers } from "../scripts/developers";
 import "../styles/About.css";
 
 function AboutText() {
@@ -30,10 +31,14 @@ function AboutText() {
       </p>
       <br />
 
-      {/* New Developers UI Cards */}
-      <div className="about-us-dev-card-section">
-        <DevCardNewUI />
-        <DevCardNewUI />
+      <div className="devs-section">
+        <h3 className="devs-title">Meet the Creators! 🎉</h3>
+        <hr />
+        <div className="dev-card-container">
+          {developers.map((data) => (
+            <DevCard key={data.name} {...data} />
+          ))}
+        </div>
       </div>
     </div>
   );

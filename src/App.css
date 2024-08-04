@@ -450,10 +450,12 @@
 .about-us-section {
   width: 100%;
   padding: 32px;
+  animation: .5s fadeInUp;
 }
 
 .about-us-title,
-.about-us-section>h2 {
+.about-us-section>h2,
+.devs-title {
   margin: 0 0 6px 0;
   color: var(--font-color);
   font-size: 32px;
@@ -471,13 +473,8 @@
   letter-spacing: .7px;
 }
 
-.devs-section {
-  animation: 1s fadeInUp;
-}
-
 .devs-title {
-  margin: 32px 0;
-  text-align: center;
+  text-align: left;
   color: var(--font-color);
   font-size: 32px;
   font-family: "Rubik", sans-serif;
@@ -485,36 +482,66 @@
   letter-spacing: .7px;
 }
 
-/* .dev-card-container {
+.dev-card-container {
+  margin: 24px 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 32px;
-} */
+  gap: 20px;
+}
 
 .dev-card {
-  width: 300px;
-  height: 400px;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   gap: 8px;
   color: var(--font-color);
   background-color: var(--secondary-color);
-  border-radius: 32px;
-  transition: transform .3s;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
-.dev-card:hover {
-  transform: scale(1.03);
+.dev-card a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.dev-card-info-container {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.dev-card p:last-of-type {
+  color: var(--font-color);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .7px;
+  font-weight: 300;
+}
+
+.dev-card-icon-link {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+}
+
+.dev-card-icon-link>svg {
+  color: var(--font-color);
+  transition: color .3s linear;
+}
+
+.dev-card-icon-link>svg:hover {
+  color: #00B4D8;
 }
 
 .dev-card img {
-  width: 150px;
-  height: 150px;
-  margin: 0 0 16px 0;
+  width: 100px;
+  height: 100px;
   padding: 6px;
   border: 3px solid #F7E018;
   border-bottom: 3px solid transparent;
@@ -1102,12 +1129,6 @@ label {
     width: 600px;
     max-width: 100%;
   }
-
-  .rating-star {
-    gap: 5px;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 /* file transfer css here */
@@ -1439,6 +1460,56 @@ label {
 
   .status {
     padding: 0 8px;
+  }
+}
+
+/* About Us */
+@media screen and (max-width: 850px) {
+  .dev-card-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .dev-card-icon-link {
+    display: none;
+  }
+
+  .rate-exp {
+    font-size: 14px;
+  }
+
+  .rating-star {
+    gap: 4px;
+  }
+}
+
+/* Feedback */
+@media screen and (max-width: 900px) {
+  .feedback-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .feedback-img-container>img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .feedback-container {
+    padding: 28px 16px;
+  }
+
+  .feedback-h1 {
+    font-size: 24px;
+  }
+
+  form {
+    padding: 0;
+    gap: 12px;
   }
 }
 

@@ -1,12 +1,14 @@
 export const developers = [
   {
     login: "Alkaison",
-    html_url: "https://twitter.com/Alkaison",
-    contributions: "S+",
+    name: "Ganesh Mourya",
+    link: "https://www.linkedin.com/in/Alkaison",
+    portfolio: "https://alkaison.vercel.app/",
   },
   {
     login: "Uzumaki",
-    html_url: "https://www.linkedin.com/in/amit-nare/",
-    contributions: "A+",
+    name: "Amit Nare",
+    link: "https://www.linkedin.com/in/amit-nare/",
+    portfolio: "https://www.linkedin.com/in/amit-nare/",
   },
 ];
