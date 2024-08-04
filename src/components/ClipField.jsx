@@ -425,7 +425,8 @@ function ClipField() {
           name="textarea"
           id="input-box"
           placeholder="Type your text or paste images using Ctrl + V."
-          autoFocus
+          autoFocus={true}
+          autoComplete="off"
           ref={textInputFieldRef}
           onChange={handleValueChange}
           onPaste={handlePaste}

@@ -159,6 +159,7 @@ export default function FeedbackForm() {
                 type="text"
                 name="user_Firstname"
                 id="firstName"
+                autoComplete="off"
                 {...register("firstName")}
               />
               <p className="error">{errors.firstName?.message}</p>
@@ -171,6 +172,7 @@ export default function FeedbackForm() {
                 type="text"
                 name="user_Lastname"
                 id="lastName"
+                autoComplete="off"
                 {...register("lastName")}
               />
               <p className="error">{errors.lastName?.message}</p>
@@ -184,6 +186,7 @@ export default function FeedbackForm() {
               type="email"
               id="email"
               name="user_email"
+              autoComplete="off"
               {...register("email")}
             />
             <p className="error">{errors.email?.message}</p>
@@ -196,6 +199,7 @@ export default function FeedbackForm() {
               rows="5"
               cols="50"
               id="message"
+              autoComplete="off"
               {...register("message")}
             ></textarea>
             <p className="error">{errors.message?.message}</p>
@@ -205,6 +209,7 @@ export default function FeedbackForm() {
             type="number"
             name="rating_star"
             id="rating"
+            autoComplete="off"
             value={rating}
             onChange={() => {}} // operation is handled below
             style={{ display: "none" }}

@@ -92,6 +92,7 @@ function Hero() {
             minLength="5"
             maxLength="5"
             autoFocus={true}
+            autoComplete="off"
             value={joiningCode}
             onChange={(e) => updateJoiningCode(e.target.value)}
             onKeyDown={(e) => {
