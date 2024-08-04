@@ -843,10 +843,14 @@
   }
 
   .devs-title {
-    margin: 0 0 32px;
+    margin: 0 0 6px;
     display: block;
-    font-size: 26px;
+    font-size: 20px;
     letter-spacing: .3px;
+  }
+
+  .dev-card-info-container {
+    padding: 12px;
   }
 }
 
