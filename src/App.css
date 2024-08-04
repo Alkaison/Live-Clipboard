@@ -478,8 +478,8 @@
   color: var(--font-color);
   font-size: 32px;
   font-family: "Rubik", sans-serif;
-  font-weight: normal;
-  letter-spacing: .7px;
+  font-weight: bold;
+  letter-spacing: 1.4px;
 }
 
 .dev-card-container {
@@ -846,7 +846,6 @@
     margin: 0 0 6px;
     display: block;
     font-size: 20px;
-    letter-spacing: .3px;
   }
 
   .dev-card-info-container {
