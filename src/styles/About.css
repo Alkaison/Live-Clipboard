@@ -1,6 +1,12 @@
 /* New Developers Card UI Styles */
 .about-us-dev-card-section {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    z-index: 10;
 }
 
 /* Dev Card */
