@@ -1,7 +1,7 @@
 import React from "react";
 import { Github, Linkedin, Sparkle } from "lucide-react";
-import "../styles/About.css";
 import { Link } from "react-router-dom";
+import "../styles/About.css";
 
 function AboutText() {
   return (
@@ -61,7 +61,8 @@ function AboutText() {
             {/* Developer Profile Picture */}
             <img
               // src="./assets/avatar-Alkaison.webp"
-              src="./assets/dev-card-temp.png"
+              // src="./assets/dev-card-temp.png"
+              src="./assets/avatar-alkaison.png"
               alt="alkaison profile"
               className="dev-card-img"
             />
@@ -69,6 +70,7 @@ function AboutText() {
             {/* Bg */}
             <img
               src="./assets/dev-card-profile-gold-bg.svg"
+              // src="./assets/dev-card-transparent-profile-gold-bg.svg"
               alt="gold profile bg"
               className="dev-card-profile-bg"
             />
