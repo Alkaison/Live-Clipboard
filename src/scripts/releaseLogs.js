@@ -1,5 +1,17 @@
 export const releaseLogsData = [
   {
+    type: "Stable",
+    version: "v1.3.0",
+    releaseDate: "12 Aug, 2024",
+    updates: [
+      "Feat: Intuitive and user-friendly UI.",
+      "Feat: Feedback form better UI design.",
+      "Feat: SEO, performance and analytics improvements.",
+      "Feat: Theme transition animation.",
+      "Feat: Cool cards UI design for devs.",
+    ],
+  },
+  {
     type: "Major",
     version: "v1.2.1",
     releaseDate: "12 Jun, 2024",
