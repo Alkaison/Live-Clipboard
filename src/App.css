@@ -439,6 +439,13 @@
   display: none;
 }
 
+.error {
+  font-size: 14px;
+  color: red;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .7px;
+}
+
 /* About Us Page */
 .about-us-section {
   width: 100%;
@@ -879,9 +886,9 @@
 /* FeedbackForm page code */
 .feedback-container {
   padding: 32px;
-  margin: 24px 12px 0;
+  margin: 12px 12px 32px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 32px;
   color: var(--font-color);
   background-color: var(--secondary-color);
@@ -904,14 +911,14 @@
 
 form {
   width: 540px;
-  gap: 16px;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
 form>p {
-  font-size: 16px;
+  margin: 4px 0 12px 0;
+  font-size: 14px;
   font-family: "Poppins", sans-serif;
   letter-spacing: .7px;
   display: flex;
@@ -921,19 +928,37 @@ form>p {
 
 .feedback-form {
   margin: 10px 0;
-  gap: 24px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-double-input-container {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
+.form-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .feedback-h1 {
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-start;
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: .2px;
 }
 
 .form-input {
-  width: calc(50% - 12px);
+  width: 100%;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -950,6 +975,7 @@ form>p {
 }
 
 textarea {
+  width: 100%;
   background: white;
   border: none;
   border-radius: 8px;
@@ -967,7 +993,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   border-radius: 10px;
   border: transparent;
   color: var(--font-color);
@@ -1029,24 +1055,25 @@ textarea {
 
 .rating-star {
   height: 40px;
+  margin: 0 0 8px 0;
   display: flex;
   gap: 12px;
   justify-content: flex-start;
   align-items: center;
+  flex-direction: row;
   font-family: "Poppins", sans-serif;
   letter-spacing: .7px;
 }
 
-.rating-star span,
+.rate-exp,
 label {
-  font-size: 24px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .7px;
 }
 
-.rating-star span {
-  font-size: 36px;
+.rate-exp {
+  font-size: 18px;
 }
 
 /* Feedback page responsive code */
