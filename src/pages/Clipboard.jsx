@@ -19,29 +19,29 @@ function Clipboard() {
         return true;
       }
 
-      const today = new Date();
-      const lastShown = new Date(getData?.lastShown || new Date());
+      // const today = new Date();
+      // const lastShown = new Date(getData?.lastShown || new Date());
 
       // extract only the date, not the time
-      const todayDate = today.toDateString();
-      const lastShownDate = lastShown.toDateString();
+      // const todayDate = today.toDateString();
+      // const lastShownDate = lastShown.toDateString();
 
-      if (todayDate !== lastShownDate) {
-        localStorage.setItem(
-          "feedback",
-          JSON.stringify({
-            lastShown: today,
-            hasOpenedFeedbackPageToday: false,
-          })
-        );
-        return false;
-      }
+      // if (todayDate !== lastShownDate) {
+      //   localStorage.setItem(
+      //     "feedback",
+      //     JSON.stringify({
+      //       lastShown: today,
+      //       hasOpenedFeedbackPageToday: false,
+      //     })
+      //   );
+      //   return false;
+      // }
 
-      if (!getData?.hasOpenedFeedbackPageToday) {
-        return false;
-      }
+      // if (!getData?.hasOpenedFeedbackPageToday) {
+      //   return false;
+      // }
 
-      return true;
+      return false;
     };
 
     if (!checkToastShown()) {

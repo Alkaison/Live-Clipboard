@@ -226,36 +226,48 @@ function ClipField() {
       return false;
     }
 
+    let isValid = false;
+
     for (let item of items) {
-      if (item?.type?.split("/")[0] !== "image") {
-        error.textContent = "Please upload an image.";
-        return false;
+      // Check if the item is a text or an image
+      if (
+        item.type.indexOf("text") !== -1 ||
+        item.type.indexOf("image") !== -1
+      ) {
+        isValid = true;
+
+        // Handle image paste
+        if (item.type.indexOf("image") !== -1) {
+          error.textContent = "";
+          setLoader(true);
+
+          const file = item.getAsFile();
+          const reader = new FileReader();
+
+          reader.onload = () => {
+            const src = reader.result;
+            console.log("Event: ", event);
+            console.log("Reader: ", reader);
+
+            if (!imageExists("clipboard-pasted-image", src)) {
+              setImages(() => [{ src: src, name: "clipboard-pasted-image" }]);
+              uploadImageOnCloudinary(src, "clipboard-pasted-image");
+            } else {
+              error.textContent = "Image already exists";
+              setLoader(false);
+            }
+          };
+
+          reader.readAsDataURL(file);
+          break;
+        }
       }
+    }
 
-      if (item.type.indexOf("image") !== -1) {
-        error.textContent = "";
-        setLoader(true);
-
-        const file = item.getAsFile();
-        const reader = new FileReader();
-
-        reader.onload = () => {
-          const src = reader.result;
-          console.log("Event: ", event);
-          console.log("Reader: ", reader);
-
-          if (!imageExists("clipboard-pasted-image", src)) {
-            setImages(() => [{ src: src, name: "clipboard-pasted-image" }]);
-            uploadImageOnCloudinary(src, "clipboard-pasted-image");
-          } else {
-            error.textContent = "Image already exists";
-            setLoader(false);
-          }
-        };
-
-        reader.readAsDataURL(file);
-        break;
-      }
+    if (!isValid) {
+      error.textContent = "Please upload an image or paste text.";
+      event.preventDefault(); // Prevent the default paste action
+      return false;
     }
   };
 

@@ -3,7 +3,7 @@ import ReleaseLogs from "./ReleaseLogs";
 import { releaseLogsData } from "../scripts/releaseLogs";
 
 function ReleaseNotes() {
-  const [showReleaseLogsLimit, setShowReleaseLogsLimit] = useState(2);
+  const [showReleaseLogsLimit, setShowReleaseLogsLimit] = useState(4);
 
   return (
     <div className="updates-container">
