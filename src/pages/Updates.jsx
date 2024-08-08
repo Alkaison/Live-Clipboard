@@ -56,6 +56,11 @@ function Updates() {
         <title>
           Updates | Realtime Clipboard - Latest Features & Improvements
         </title>
+
+        <link
+          rel="canonical"
+          href="https://live-clipboard.netlify.app/updates"
+        />
       </Helmet>
 
       <Navbar />

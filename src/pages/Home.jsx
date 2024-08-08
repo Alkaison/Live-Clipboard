@@ -60,6 +60,8 @@ function Home() {
         <title>
           Realtime Clipboard: Instant Text & Image Sharing | Collaborative Board
         </title>
+
+        <link rel="canonical" href="https://live-clipboard.netlify.app" />
       </Helmet>
 
       <Navbar />

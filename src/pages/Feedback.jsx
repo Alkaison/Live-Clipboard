@@ -69,6 +69,11 @@ export default function Feedback() {
         />
 
         <title>Feedback | Realtime Clipboard - Share Your Experience</title>
+
+        <link
+          rel="canonical"
+          href="https://live-clipboard.netlify.app/feedback"
+        />
       </Helmet>
 
       <Navbar />
