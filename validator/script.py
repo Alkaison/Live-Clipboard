@@ -2,6 +2,7 @@ import json, os, datetime
 
 # Script to validate the JSON File for the Realtime Clipboard Data
 roomCodesCount, imagesUploadedCount, usersCount = 0, 0, 0
+usersList = []
 
 """ Find all json files in the current root directory """
 def find_json_files(root_dir):
@@ -32,7 +33,7 @@ def validate_root_nodes_of_the_json_file(file_name):
 
 """" Function to validate the Sub Nodes (Room's Data) from the JSON File """
 def validate_sub_nodes_of_the_json_file(file_name):
-    global usersCount, imagesUploadedCount
+    global usersCount, imagesUploadedCount, usersList
 
     try:
         with open(file_name, encoding='utf-8') as file:
@@ -46,7 +47,8 @@ def validate_sub_nodes_of_the_json_file(file_name):
             if isinstance(value, dict):
                 allowed_keys = {"text", "lastUpdated", "images", "users"}
                 valid_keys = set(value.keys()) == allowed_keys
-                usersCount += len(value.get("users", []))
+                # usersCount += len(value.get("users", []))
+                usersList += value.get("users", [])
                 imagesUploadedCount += len(value.get("images", []))
                 if not valid_keys:
                     unexpected_keys = set(value.keys()) - allowed_keys
@@ -100,6 +102,8 @@ if __name__ == '__main__':
     new_file_name = f"realtime-clipboard-default-rtdb-export-{current_date_time}.json"
 
     if root_data and sub_root_data:
+        usersList = list(set(usersList))
+        usersCount = len(usersList)
         print("\n----------------------------------------")
         print("JSON File Validation Result: SUCCESS")
         print("----------------------------------------")
