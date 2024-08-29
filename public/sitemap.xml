@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://live-clipboard.netlify.app/</loc>
+    <lastmod>2024-08-29</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://live-clipboard.netlify.app/about</loc>
+    <lastmod>2024-08-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://live-clipboard.netlify.app/updates</loc>
+    <lastmod>2024-08-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://live-clipboard.netlify.app/feedback</loc>
+    <lastmod>2024-08-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
