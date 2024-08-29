@@ -13,7 +13,7 @@ function DevCardNewUI() {
 
       {/* Header Title */}
       <div className="dev-card-header">
-        <h3>Ganesh Mourya</h3>
+        <h3>Ganesh Maurya</h3>
         <div className="dev-card-header-icons">
           <Link to="https://alkaison.vercel.app/" target="_blank">
             <Sparkle />

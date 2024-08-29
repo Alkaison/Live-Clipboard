@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import { clickLogging, clipboardLogging } from "../scripts/analyticsLogging";
 
 function Hero() {
@@ -51,7 +52,7 @@ function Hero() {
 
       <h1 className="app-name">Realtime Clipboard</h1>
       <h2 className="tag-line">
-        Instantly join room with unique key, share text and images in real time!
+        Instantly join room with unique key, share text and image in realtime!
       </h2>
 
       <div className="room-joining-container">
@@ -107,6 +108,8 @@ function Hero() {
 
       <div
         className="showStar-container"
+        data-tooltip-id="my-tooltip"
+        data-tooltip-content="Help us improve our realtime collaboration tool!"
         onClick={() => {
           clickLogging("Rating");
           navigate("/feedback");
@@ -125,6 +128,8 @@ function Hero() {
           (75+ Reviews)
         </h3>
       </div>
+
+      <Tooltip id="my-tooltip" />
     </div>
   );
 }

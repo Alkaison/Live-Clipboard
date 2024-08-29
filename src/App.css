@@ -326,13 +326,14 @@
   text-align: center;
   text-wrap: balance;
   color: var(--font-color);
-  border: 1.5px solid #064374;
+  border: 2px solid #064374;
   border-radius: 32px;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   letter-spacing: .7px;
   transition: border .3s ease-in-out;
+  animation: breathe 1.2s infinite ease-in-out;
 }
 
 .showStar-container h3 span {
@@ -340,7 +341,21 @@
 }
 
 .showStar-container h3:hover {
-  border: 1.5px solid #00B4D8;
+  border: 2px solid #00B4D8;
+}
+
+@keyframes breathe {
+  0% {
+    border: 2px solid #064374;
+  }
+
+  50% {
+    border: 2px solid #00B4D8;
+  }
+
+  100% {
+    border: 2px solid #064374;
+  }
 }
 
 /* clipboard page code here */
@@ -404,8 +419,9 @@
 }
 
 .status .cp-code span img {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1/1;
   pointer-events: none;
 }
 
@@ -497,8 +513,15 @@
   gap: 8px;
   color: var(--font-color);
   background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 12px;
   cursor: pointer;
+  transition: border .3s linear, transform .3s linear;
+}
+
+.dev-card:hover {
+  border: 2px solid #00B4D8;
+  transform: scale(1.025);
 }
 
 .dev-card a {
@@ -513,6 +536,7 @@
   align-items: center;
   gap: 16px;
   position: relative;
+  transition: background-color .3s linear;
 }
 
 .dev-card p:last-of-type {
@@ -706,6 +730,15 @@
   line-height: normal;
   letter-spacing: .7px;
   cursor: pointer;
+}
+
+/* Tooltip Styles */
+#my-tooltip {
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .5px;
+  font-weight: 400;
+  z-index: 1000;
 }
 
 /* Responsive Updates Page */

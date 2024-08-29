@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
+import { Tooltip } from "react-tooltip";
 
 function DevCard({ name, link, login, portfolio }) {
   return (
@@ -14,11 +15,19 @@ function DevCard({ name, link, login, portfolio }) {
             <p>Username: {login}</p>
           </div>
 
-          <Link to={portfolio} className="dev-card-icon-link" target="_blank">
+          <Link
+            to={portfolio}
+            className="dev-card-icon-link"
+            target="_blank"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Visit Portfolio"
+          >
             <Sparkles />
           </Link>
         </div>
       </Link>
+
+      <Tooltip id="my-tooltip" />
     </div>
   );
 }

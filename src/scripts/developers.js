@@ -1,7 +1,7 @@
 export const developers = [
   {
     login: "Alkaison",
-    name: "Ganesh Mourya",
+    name: "Ganesh Maurya",
     link: "https://www.linkedin.com/in/Alkaison",
     portfolio: "https://alkaison.vercel.app/",
   },

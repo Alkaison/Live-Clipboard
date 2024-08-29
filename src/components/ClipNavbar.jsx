@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { appDatabase } from "../firebase/config";
 import { ref, onDisconnect, onValue } from "firebase/database";
 import { clickLogging } from "../scripts/analyticsLogging";
+import { Tooltip } from "react-tooltip";
 
 function ClipNavbar({ internetStatus }) {
   const navigate = useNavigate();
@@ -22,10 +23,24 @@ function ClipNavbar({ internetStatus }) {
     });
   };
 
-  // copy the room's URL into user's clipboard
+  // handle room code sharing and copy to clipboard
   const handleCopyCode = () => {
-    clickLogging("Room URL Copied: " + code);
-    navigator.clipboard.writeText(`https://live-clipboard.netlify.app/${code}`);
+    const shareData = {
+      title: `Realtime Clipboard: Instant Text & Image Sharing | Collaborative Board`,
+      text: "Share the room's URL with others to get started. Just copy and paste it to your browser's address bar.",
+      url: `https://live-clipboard.netlify.app/${code}`,
+    };
+
+    // Check if Web Share API is available
+    if (navigator.share) {
+      navigator.share(shareData);
+    } else {
+      navigator.clipboard.writeText(
+        `https://live-clipboard.netlify.app/${code}`
+      );
+    }
+
+    clickLogging("Room URL Shared: " + code);
   };
 
   // validate users joining code and set preferred theme
@@ -78,6 +93,8 @@ function ClipNavbar({ internetStatus }) {
 
         <span
           id="clip-status"
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Connection Status"
           style={{
             backgroundColor: !internetStatus
               ? "red"
@@ -97,6 +114,8 @@ function ClipNavbar({ internetStatus }) {
             className="theme"
             src={isDark ? "assets/moon.webp" : "assets/sun.webp"}
             alt={isDark ? "Dark Theme" : "Light Theme"}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Toggle Theme"
             onClick={() => {
               if (!document.startViewTransition) toggleTheme();
               document.startViewTransition(toggleTheme);
@@ -106,12 +125,16 @@ function ClipNavbar({ internetStatus }) {
           <span
             title="Click to copy the link to share with your friends"
             id="clip-code"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Share Link"
             onClick={handleCopyCode}
           >
-            {code} <img src="assets/network.webp" alt="Copy Icon" />
+            {code} <img src="assets/copy.svg" alt="Copy Icon" />
           </span>
         </div>
       </div>
+
+      <Tooltip id="my-tooltip" />
     </div>
   );
 }

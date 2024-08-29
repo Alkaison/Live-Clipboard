@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 
 function Navbar() {
   const [isNavbarActive, setNavbarActive] = useState(false);
@@ -80,6 +81,8 @@ function Navbar() {
             className="theme"
             src={isDark ? "assets/moon.webp" : "assets/sun.webp"}
             alt={isDark ? "Dark Theme" : "Light Theme"}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Toggle Theme"
             onClick={() => {
               if (!document.startViewTransition) toggleTheme();
               document.startViewTransition(toggleTheme);
@@ -107,6 +110,8 @@ function Navbar() {
           </Link>
         </li>
       </ul>
+
+      <Tooltip id="my-tooltip" />
     </div>
   );
 }
