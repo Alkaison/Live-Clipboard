@@ -4,6 +4,7 @@ import { appDatabase } from "../firebase/config";
 import { ref, onDisconnect, onValue } from "firebase/database";
 import { clickLogging } from "../scripts/analyticsLogging";
 import { Tooltip } from "react-tooltip";
+import { Toaster, toast } from "sonner";
 
 function ClipNavbar({ internetStatus }) {
   const navigate = useNavigate();
@@ -38,6 +39,14 @@ function ClipNavbar({ internetStatus }) {
       navigator.clipboard.writeText(
         `https://live-clipboard.netlify.app/${code}`
       );
+
+      // show toast notification
+      const toastId = toast("Sonner");
+      toast.dismiss(toastId);
+      toast.info("URL copied to clipboard.", {
+        duration: 3000,
+        id: toastId,
+      });
     }
 
     clickLogging("Room URL Shared: " + code);
@@ -107,6 +116,8 @@ function ClipNavbar({ internetStatus }) {
           {!internetStatus ? "Offline" : status}
         </span>
       </div>
+
+      <Toaster richColors={true} />
 
       <div className="nav-content">
         <div className="cp-code">

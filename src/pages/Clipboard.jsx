@@ -131,9 +131,10 @@ function Clipboard() {
         </title>
       </Helmet>
 
-      <Toaster richColors={true} />
       <ClipNavbar internetStatus={internetStatus} />
       {internetStatus ? <ClipField /> : <NoInternetComponent />}
+
+      <Toaster richColors={true} />
     </>
   );
 }
