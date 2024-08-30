@@ -15,6 +15,7 @@ function ClipField() {
   let timeoutId;
   const { code } = useParams();
   const textInputFieldRef = useRef(null);
+  const lineNumbersContainerRef = useRef(null);
   const uploadBtnRef = useRef(null);
   const errorRef = useRef(null);
   const fileContainerRef = useRef(null);
@@ -337,6 +338,14 @@ function ClipField() {
         const snapShotData = snapshot.val();
         textInputFieldRef.current.value = snapShotData?.text ?? "";
 
+        // update Line Numbers Changes
+        const numberOfLines =
+          textInputFieldRef.current.value.split("\n").length;
+
+        lineNumbersContainerRef.current.innerHTML = Array(numberOfLines)
+          .fill("<span></span>")
+          .join("");
+
         let users = [...(snapShotData?.users ?? [])];
 
         // add user uuid to users if not found
@@ -430,9 +439,68 @@ function ClipField() {
     }
   }, [fileHandler]);
 
+  // handle Next Line Numbers Change
+  useEffect(() => {
+    const handleLineNumberChanges = () => {
+      const numberOfLines = textInputFieldRef.current.value.split("\n").length;
+
+      lineNumbersContainerRef.current.innerHTML = Array(numberOfLines)
+        .fill("<span></span>")
+        .join("");
+    };
+
+    textInputFieldRef.current.addEventListener(
+      "keyup",
+      handleLineNumberChanges
+    );
+
+    return () => {
+      textInputFieldRef.current.removeEventListener(
+        "keyup",
+        handleLineNumberChanges
+      );
+    };
+  }, []);
+
+  // handle TextArea and LineNumbers Changes Syncing
+  useEffect(() => {
+    const syncScroll = (source) => {
+      if (source === "textarea") {
+        lineNumbersContainerRef.current.scrollTop =
+          textInputFieldRef.current.scrollTop;
+      } else if (source === "linenumbers") {
+        textInputFieldRef.current.scrollTop =
+          lineNumbersContainerRef.current.scrollTop;
+      }
+    };
+
+    const handleScroll = (e) => {
+      if (e.target === textInputFieldRef.current) {
+        syncScroll("textarea");
+      } else if (e.target === lineNumbersContainerRef.current) {
+        syncScroll("linenumbers");
+      }
+    };
+
+    textInputFieldRef.current.addEventListener("scroll", handleScroll);
+    lineNumbersContainerRef.current.addEventListener("scroll", handleScroll);
+
+    return () => {
+      textInputFieldRef.current.removeEventListener("scroll", handleScroll);
+      lineNumbersContainerRef.current.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+    };
+  }, []);
+
   return (
     <div className="Clipboard-container">
       <div className="input">
+        <div className="line-numbers" ref={lineNumbersContainerRef}>
+          <span></span>
+        </div>
+
         <textarea
           name="textarea"
           id="input-box"

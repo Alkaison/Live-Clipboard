@@ -1308,9 +1308,44 @@ label {
 
 .input {
   width: 75%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: var(--secondary-color);
   border: 1px solid #013653c9;
   border-radius: 12px;
+}
+
+/* TextArea Line Numbers */
+.line-numbers {
+  width: 32px;
+  height: 100%;
+  min-height: calc(100svh - 124px);
+  max-height: calc(100svh - 124px);
+  padding: 16px 2px 16px 4px;
+  text-align: right;
+  font-size: 13px;
+  font-family: monospace, sans-serif;
+  letter-spacing: .5px;
+  overflow: auto;
+}
+
+.line-numbers::-webkit-scrollbar {
+  display: none;
+}
+
+.line-numbers span {
+  counter-increment: linenumber;
+}
+
+.line-numbers span::before {
+  content: counter(linenumber);
+  display: block;
+  color: #506882;
+  line-height: 1.5rem;
+  font-size: 13px;
+  font-family: monospace, sans-serif;
+  letter-spacing: .7px;
 }
 
 /* Images Action Buttons Container */
