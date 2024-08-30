@@ -463,6 +463,40 @@ function ClipField() {
     };
   }, []);
 
+  // handle Tab Click
+  useEffect(() => {
+    const handleTabClick = (event) => {
+      if (event.key === "Tab") {
+        const textarea = textInputFieldRef.current;
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+
+        // Insert tab character at the caret position
+        textarea.value =
+          textarea.value.substring(0, start) +
+          "\t" +
+          textarea.value.substring(end);
+
+        // Move the caret position after the inserted tab character
+        textarea.selectionStart = start + 1;
+        textarea.selectionEnd = start + 1;
+
+        // Set focus back to the textarea to keep the user in the same position
+        textarea.focus();
+
+        // Prevent the default tab behavior (which usually moves focus)
+        event.preventDefault();
+      }
+    };
+
+    const textarea = textInputFieldRef.current;
+    textarea.addEventListener("keydown", handleTabClick);
+
+    return () => {
+      textarea.removeEventListener("keydown", handleTabClick);
+    };
+  }, []);
+
   // handle TextArea and LineNumbers Changes Syncing
   useEffect(() => {
     const lineNumbersContainer = lineNumbersContainerRef.current;
