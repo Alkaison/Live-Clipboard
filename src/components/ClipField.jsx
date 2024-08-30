@@ -336,15 +336,19 @@ function ClipField() {
     const onValueCallback = (snapshot) => {
       if (snapshot.exists()) {
         const snapShotData = snapshot.val();
-        textInputFieldRef.current.value = snapShotData?.text ?? "";
 
-        // update Line Numbers Changes
-        const numberOfLines =
-          textInputFieldRef.current.value.split("\n").length;
+        if (textInputFieldRef.current) {
+          // update text
+          textInputFieldRef.current.value = snapShotData?.text ?? "";
 
-        lineNumbersContainerRef.current.innerHTML = Array(numberOfLines)
-          .fill("<span></span>")
-          .join("");
+          // update Line Numbers Changes
+          const numberOfLines =
+            textInputFieldRef.current.value.split("\n").length;
+
+          lineNumbersContainerRef.current.innerHTML = Array(numberOfLines)
+            .fill("<span></span>")
+            .join("");
+        }
 
         let users = [...(snapShotData?.users ?? [])];
 
@@ -441,56 +445,51 @@ function ClipField() {
 
   // handle Next Line Numbers Change
   useEffect(() => {
-    const handleLineNumberChanges = () => {
-      const numberOfLines = textInputFieldRef.current.value.split("\n").length;
+    const lineNumbersContainer = lineNumbersContainerRef.current;
+    const textAreaInputField = textInputFieldRef.current;
 
-      lineNumbersContainerRef.current.innerHTML = Array(numberOfLines)
+    const handleLineNumberChanges = () => {
+      const numberOfLines = textAreaInputField.value.split("\n").length;
+
+      lineNumbersContainer.innerHTML = Array(numberOfLines)
         .fill("<span></span>")
         .join("");
     };
 
-    textInputFieldRef.current.addEventListener(
-      "keyup",
-      handleLineNumberChanges
-    );
+    textAreaInputField.addEventListener("keyup", handleLineNumberChanges);
 
     return () => {
-      textInputFieldRef.current.removeEventListener(
-        "keyup",
-        handleLineNumberChanges
-      );
+      textAreaInputField.removeEventListener("keyup", handleLineNumberChanges);
     };
   }, []);
 
   // handle TextArea and LineNumbers Changes Syncing
   useEffect(() => {
+    const lineNumbersContainer = lineNumbersContainerRef.current;
+    const textAreaInputField = textInputFieldRef.current;
+
     const syncScroll = (source) => {
       if (source === "textarea") {
-        lineNumbersContainerRef.current.scrollTop =
-          textInputFieldRef.current.scrollTop;
+        lineNumbersContainer.scrollTop = textAreaInputField.scrollTop;
       } else if (source === "linenumbers") {
-        textInputFieldRef.current.scrollTop =
-          lineNumbersContainerRef.current.scrollTop;
+        textAreaInputField.scrollTop = lineNumbersContainer.scrollTop;
       }
     };
 
     const handleScroll = (e) => {
-      if (e.target === textInputFieldRef.current) {
+      if (e.target === textAreaInputField) {
         syncScroll("textarea");
-      } else if (e.target === lineNumbersContainerRef.current) {
+      } else if (e.target === lineNumbersContainer) {
         syncScroll("linenumbers");
       }
     };
 
-    textInputFieldRef.current.addEventListener("scroll", handleScroll);
-    lineNumbersContainerRef.current.addEventListener("scroll", handleScroll);
+    textAreaInputField.addEventListener("scroll", handleScroll);
+    lineNumbersContainer.addEventListener("scroll", handleScroll);
 
     return () => {
-      textInputFieldRef.current.removeEventListener("scroll", handleScroll);
-      lineNumbersContainerRef.current.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+      textAreaInputField.removeEventListener("scroll", handleScroll);
+      lineNumbersContainer.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
