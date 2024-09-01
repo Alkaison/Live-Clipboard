@@ -7,12 +7,16 @@ import Updates from "./pages/Updates";
 import Clipboard from "./pages/Clipboard";
 import Feedback from "./pages/Feedback";
 import UserIdentification from "./components/UserIdentification";
+import UpdateAvailableServiceWorker from "./components/UpdateAvailableServiceWorker";
 
 function App() {
   return (
     <Router>
       {/* UserIdentification placed here to run on every page load */}
       <UserIdentification />
+
+      {/* New Update Banner and Version Release */}
+      <UpdateAvailableServiceWorker />
       <Routes>
         <Route extact path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

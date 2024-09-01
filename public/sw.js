@@ -51,6 +51,15 @@ self.addEventListener("activate", (event) => {
       );
     })
   );
+
+  // Inform clients about the update
+  self.clients.claim().then(() => {
+    self.clients.matchAll({ type: "window" }).then((clients) => {
+      clients.forEach((client) => {
+        client.postMessage({ type: "NEW_VERSION_AVAILABLE" });
+      });
+    });
+  });
 });
 
 // Prioritize network for fetches with a fallback to cache
