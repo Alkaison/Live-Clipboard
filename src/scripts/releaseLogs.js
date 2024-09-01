@@ -1,6 +1,19 @@
 export const releaseLogsData = [
   {
     type: "Stable",
+    version: "v1.3.1",
+    releaseDate: "01 Sep, 2024",
+    updates: [
+      "Feat: Added line numbers support in clipboard editor.",
+      "Feat: Added WebShare API support.",
+      "Feat: Added update available banner for new updates.",
+      "Feat: Added tooltip in all the pages.",
+      "Docs: Added Privacy Policy and Terms and Conditions pages.",
+      "Docs: Added sitemap.xml",
+    ],
+  },
+  {
+    type: "Stable",
     version: "v1.3.0",
     releaseDate: "12 Aug, 2024",
     updates: [
