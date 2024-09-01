@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReleaseLogs from "./ReleaseLogs";
+import Footer from "./Footer";
 import { releaseLogsData } from "../scripts/releaseLogs";
 
 function ReleaseNotes() {
@@ -27,6 +28,8 @@ function ReleaseNotes() {
           </button>
         </div>
       )}
+
+      <Footer />
     </div>
   );
 }

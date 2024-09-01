@@ -1,5 +1,6 @@
 import React from "react";
 import DevCard from "./DevCard";
+import Footer from "./Footer";
 import { developers } from "../scripts/developers";
 import "../styles/About.css";
 
@@ -40,6 +41,8 @@ function AboutText() {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

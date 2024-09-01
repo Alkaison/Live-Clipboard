@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import FeedbackForm from "../components/FeedbackForm";
 import { pageLogging } from "../scripts/analyticsLogging";
 import { Helmet } from "react-helmet";
@@ -78,6 +79,7 @@ export default function Feedback() {
 
       <Navbar />
       <FeedbackForm />
+      <Footer />
     </>
   );
 }

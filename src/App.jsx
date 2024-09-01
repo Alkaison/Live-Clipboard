@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Updates from "./pages/Updates";
@@ -8,6 +7,10 @@ import Clipboard from "./pages/Clipboard";
 import Feedback from "./pages/Feedback";
 import UserIdentification from "./components/UserIdentification";
 import UpdateAvailableServiceWorker from "./components/UpdateAvailableServiceWorker";
+import TermsConditions from "./pages/TermsConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ScrollToTop from "./components/ScrollToTop";
+import "./App.css";
 
 function App() {
   return (
@@ -17,11 +20,15 @@ function App() {
 
       {/* New Update Banner and Version Release */}
       <UpdateAvailableServiceWorker />
+
+      <ScrollToTop />
       <Routes>
         <Route extact path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/updates" element={<Updates />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/:code" element={<Clipboard />} />
       </Routes>
     </Router>

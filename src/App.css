@@ -137,7 +137,6 @@
 /* Body */
 .body-container {
   padding: 32px 32px 0 32px;
-  margin: 0 0 32px 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -465,7 +464,7 @@
 /* About Us Page */
 .about-us-section {
   width: 100%;
-  padding: 32px;
+  padding: 32px 32px 0;
   animation: .5s fadeInUp;
 }
 
@@ -616,7 +615,7 @@
 
 /* Updates Page */
 .updates-container {
-  padding: 32px;
+  padding: 32px 32px 0;
 }
 
 .updates-container hr {
