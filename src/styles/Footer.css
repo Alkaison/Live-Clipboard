@@ -35,3 +35,15 @@
     color: rgb(36, 186, 246);
     border-color: rgb(36, 186, 246);
 }
+
+/* Responsive */
+@media screen and (max-width: 500px) {
+    .footer-content p:last-of-type {
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+    }
+
+    .showStar-container h3 {
+        font-size: 14px !important;
+    }
+}

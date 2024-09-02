@@ -23,6 +23,10 @@
     letter-spacing: .5px;
 }
 
+.privacy-policy-container ul {
+    padding-left: 20px;
+}
+
 .privacy-policy-container a {
     color: #007bff;
     text-decoration: none;
@@ -30,4 +34,24 @@
 
 .privacy-policy-container a:hover {
     text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .privacy-policy-container {
+        padding: 16px 16px 0;
+    }
+
+    .privacy-policy-container h1 {
+        font-size: 28px;
+    }
+
+    .privacy-policy-container h2 {
+        margin: 10px 0;
+        font-size: 20px;
+    }
+
+    .privacy-policy-container p {
+        margin-bottom: 16px;
+    }
 }

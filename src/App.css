@@ -1622,7 +1622,13 @@ label {
 
   #input-box {
     height: calc(100svh - 495px);
-    min-height: 300px;
+    min-height: 400px;
+  }
+
+  .line-numbers {
+    height: calc(100svh - 495px);
+    min-height: 400px;
+    max-height: calc(100svh - 495px);
   }
 
   .file-container {
