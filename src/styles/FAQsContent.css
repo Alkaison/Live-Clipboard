@@ -1,0 +1,54 @@
+.faqs-container {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--font-color);
+    font-family: "Poppins", sans-serif;
+    letter-spacing: .5px;
+}
+
+.faqs-content-container {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: border .15s linear;
+}
+
+.faqs-content-container:hover {
+    border: 1px solid #ffffff50;
+}
+
+.faqs-content-container p:first-of-type {
+    font-size: 22px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.faqs-content-container p:first-of-type span {
+    color: #F7E018;
+}
+
+.faqs-content-container p:last-of-type {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .faqs-content-container p:first-of-type {
+        font-size: 18px;
+    }
+
+    .faqs-content-container p:last-of-type {
+        font-size: 16px;
+    }
+}

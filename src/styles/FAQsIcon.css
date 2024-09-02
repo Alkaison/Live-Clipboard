@@ -1,0 +1,19 @@
+.faqs-icon {
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    text-decoration: none;
+    color: var(--font-color);
+    border: 1px solid var(--font-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    transition: background-color .15s linear;
+    cursor: pointer;
+}

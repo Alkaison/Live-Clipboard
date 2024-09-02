@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { clickLogging, clipboardLogging } from "../scripts/analyticsLogging";
 import Footer from "./Footer";
+import FAQsIcon from "./FAQsIcon";
 
 function Hero() {
   const navigate = useNavigate();
@@ -131,6 +132,7 @@ function Hero() {
       </div>
 
       <Tooltip id="my-tooltip" />
+      <FAQsIcon />
       <Footer />
     </div>
   );

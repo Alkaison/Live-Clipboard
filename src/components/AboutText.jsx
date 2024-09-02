@@ -1,8 +1,11 @@
 import React from "react";
 import DevCard from "./DevCard";
 import Footer from "./Footer";
+import FAQsContent from "./FAQsContent";
 import { developers } from "../scripts/developers";
+import { frequentlyAskedQuestionsList } from "../scripts/faqs";
 import "../styles/About.css";
+import "../styles/FAQsContent.css";
 
 function AboutText() {
   return (
@@ -40,6 +43,19 @@ function AboutText() {
             <DevCard key={data.name} {...data} />
           ))}
         </div>
+      </div>
+
+      {/* FAQs */}
+      <br />
+      <h2 id="faqs">
+        <span style={{ color: "#F7E018" }}>#</span> Frequently Asked Questions
+      </h2>
+      <hr />
+
+      <div className="faqs-container">
+        {frequentlyAskedQuestionsList.map((faq) => (
+          <FAQsContent key={faq.question} {...faq} />
+        ))}
       </div>
 
       <Footer />
