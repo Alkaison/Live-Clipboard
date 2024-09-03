@@ -31,7 +31,7 @@ function ClipField() {
     update(roomRef, {
       text: value,
       images: firebaseData.images || [],
-      users: firebaseData.users || [],
+      users: firebaseData?.users?.length ? firebaseData.users : [USER_UUID],
       lastUpdated: now,
     }); // data store into firebase
   };
@@ -350,10 +350,12 @@ function ClipField() {
             .join("");
         }
 
-        let users = [...(snapShotData?.users ?? [])];
+        let users = snapShotData?.users ?? [];
 
-        // add user uuid to users if not found
-        if (!users?.includes(USER_UUID)) {
+        // if users array is empty, add the user uuid
+        if (!users.length) {
+          users = [USER_UUID];
+        } else if (!users.includes(USER_UUID)) {
           users.push(USER_UUID);
         }
 

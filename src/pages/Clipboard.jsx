@@ -2,14 +2,26 @@ import React, { useState, useEffect } from "react";
 import ClipNavbar from "../components/ClipNavbar";
 import ClipField from "../components/ClipField";
 import NoInternetComponent from "../components/NoInternetComponent";
+import NoUserSessionPresent from "../components/NoUserSessionPresent";
 import { pageLogging } from "../scripts/analyticsLogging";
 import { Helmet } from "react-helmet";
 import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { userIdentifier } from "../scripts/userIdentifier";
+
+const USER_UUID = userIdentifier() || "";
 
 function Clipboard() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(USER_UUID);
   const [internetStatus, setInternetStatus] = useState(navigator.onLine);
+
+  // fetch user UUID and update in case of missing UUID
+  useEffect(() => {
+    if (!USER_UUID) {
+      setUser(userIdentifier() || "");
+    }
+  }, []);
 
   useEffect(() => {
     const getData = JSON.parse(localStorage.getItem("feedback")) || {};
@@ -132,7 +144,16 @@ function Clipboard() {
       </Helmet>
 
       <ClipNavbar internetStatus={internetStatus} />
-      {internetStatus ? <ClipField /> : <NoInternetComponent />}
+
+      {internetStatus ? (
+        user.length > 16 ? (
+          <ClipField />
+        ) : (
+          <NoUserSessionPresent />
+        )
+      ) : (
+        <NoInternetComponent />
+      )}
 
       <Toaster richColors={true} />
     </>
