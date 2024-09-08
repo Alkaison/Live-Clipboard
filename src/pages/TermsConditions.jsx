@@ -63,7 +63,7 @@ function TermsConditions() {
 
       <Navbar />
       <TermsConditionsContent />
-      <Footer />
+      <Footer active={true} />
     </>
   );
 }

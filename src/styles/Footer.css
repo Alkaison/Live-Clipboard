@@ -37,6 +37,12 @@
 }
 
 /* Responsive */
+@media screen and (max-width: 768px) {
+    .footer-content.active {
+        padding: 0 12px;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .footer-content p:last-of-type {
         flex-wrap: wrap;

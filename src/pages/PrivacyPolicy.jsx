@@ -63,7 +63,7 @@ function PrivacyPolicy() {
 
       <Navbar />
       <PrivacyPolicyContent />
-      <Footer />
+      <Footer active={true} />
     </>
   );
 }
