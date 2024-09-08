@@ -542,6 +542,7 @@ function ClipField() {
           placeholder="Type your text or paste images using Ctrl + V."
           autoFocus={true}
           autoComplete="off"
+          spellCheck="false"
           ref={textInputFieldRef}
           onChange={handleValueChange}
           onPaste={handlePaste}

@@ -454,6 +454,11 @@
   display: none;
 }
 
+#input-box::-webkit-scrollbar-thumb,
+#input-box::-webkit-scrollbar-track {
+  cursor: default;
+}
+
 .error {
   font-size: 14px;
   color: red;
