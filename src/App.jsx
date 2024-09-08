@@ -11,6 +11,7 @@ import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
+import TestFieldComponent from "./components/TestFieldComponent";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/highlight" element={<TestFieldComponent />} />
         <Route path="/:code" element={<Clipboard />} />
       </Routes>
     </Router>
