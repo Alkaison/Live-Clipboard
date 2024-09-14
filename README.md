@@ -4,6 +4,7 @@ Welcome, amazing developers! 👋 We are delighted to introduce the **Live Clipb
 
 [![Stars](https://img.shields.io/github/stars/Alkaison/Live-Clipboard.svg)](https://github.com/Alkaison/Live-Clipboard/stargazers)
 [![Forks](https://img.shields.io/github/forks/Alkaison/Live-Clipboard.svg)](https://github.com/Alkaison/Live-Clipboard/network/members)
+![Static Badge](https://img.shields.io/badge/Maintained-Yes-blue)
 [![License](https://img.shields.io/github/license/Alkaison/Live-Clipboard.svg)](https://github.com/Alkaison/Live-Clipboard/blob/main/LICENSE)
 [![Release](https://img.shields.io/github/release/Alkaison/Live-Clipboard.svg)](https://github.com/Alkaison/Live-Clipboard/releases)
 
@@ -12,6 +13,14 @@ Welcome, amazing developers! 👋 We are delighted to introduce the **Live Clipb
 ## Project Overview 🔮
 
 **Live Clipboard** is an innovative web app crafted for effortless real-time collaboration. Imagine it as a versatile digital workspace where users can instantly share, edit, and brainstorm text and images together, regardless of their physical location. Whether you’re a developer, content creator, or part of a team, Live Clipboard simplifies the process of collective idea generation and content management, breaking down barriers and bringing your team closer together.
+
+### ⚠️ Important Notice ⚠️
+
+This project is being actively maintained by Alkaison, and exciting new updates will continue to roll out every month. However, please be informed that the latest code updates will not be pushed to this repository moving forward due to certain privacy concerns.
+
+The current version of the project will remain here as is, but future updates and improvements will no longer be reflected in this repository.
+
+Thank you for your understanding and continued support! Stay tuned for more updates and features in the coming months.
 
 ### Technologies Used:
 
